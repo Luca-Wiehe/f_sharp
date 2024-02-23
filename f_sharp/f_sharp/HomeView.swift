@@ -9,7 +9,7 @@ struct HomeView: View {
             VStack(alignment: .leading) {
                 HStack {
                     CalendarView()
-                        .frame(width: UIScreen.main.bounds.width / 2, height: 400)
+                        .frame(width: UIScreen.main.bounds.width / 2, height: 500)
                     
                     // Placeholder view
                     Rectangle()

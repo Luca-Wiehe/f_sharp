@@ -10,7 +10,13 @@ struct CalendarView: View {
         let firstOfMonth = Calendar.current.date(from: components)!
         let weekdayOfFirst = Calendar.current.component(.weekday, from: firstOfMonth)
         let offset = (weekdayOfFirst + 5) % 7 // Adjusting for Monday start
-        return Array(repeating: "", count: offset) + (1...totalDays).map { String($0) }
+        var days = Array(repeating: "", count: offset) + (1...totalDays).map { String($0) }
+        
+        // Ensure the grid always has 6 rows
+        let totalCells = 6 * 7 // 6 rows, 7 columns
+        days.append(contentsOf: Array(repeating: "", count: totalCells - days.count))
+        
+        return days
     }
     
     private var currentDay: String {
@@ -92,5 +98,16 @@ struct CalendarView: View {
             }
         }
         .padding()
+        .gesture(
+            DragGesture().onEnded { value in
+                if value.translation.width > 100 {
+                    // Swipe right (previous month)
+                    goToPreviousMonth()
+                } else if value.translation.width < -100 {
+                    // Swipe left (next month)
+                    goToNextMonth()
+                }
+            }
+        )
     }
 }
