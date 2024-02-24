@@ -1,58 +1,64 @@
 import SwiftUI
 
 struct HomeView: View {
-    // Dummy data for the scrollable lists
+    // Existing dummy data for the scrollable lists
     let items = Array(repeating: "Item", count: 10)
-
+    
+    // New dummy list with some strings
+    let dummyList: [String] = ["Hello World"]
+    
+    // Dummy data for weekly goals, replace with your actual data model
+    @State var weeklyGoals = [
+        ("circle", "Goal 1", false),
+        ("circle", "Goal 2", false),
+        ("circle", "Goal 3", false)
+    ]
+    
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                HStack {
-                    CalendarView()
-                        .frame(width: UIScreen.main.bounds.width / 2, height: 500)
-                    
-                    // Placeholder view
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(width: UIScreen.main.bounds.width / 2, height: 400)
-                }
-                
-                Text("Jump back in")
-                    .font(.headline)
-                    .padding([.leading, .top])
-
-                // Horizontally scrollable list with dummy elements
-                ScrollView(.horizontal, showsIndicators: false) {
+        ZStack(alignment: .bottomTrailing) {
+            ScrollView {
+                VStack(alignment: .leading) {
                     HStack {
-                        ForEach(0..<items.count, id: \.self) { index in
-                            Text("\(items[index]) \(index + 1)")
-                                .frame(width: 100, height: 100)
-                                .background(Color.blue)
-                                .cornerRadius(10)
-                                .padding(.leading, index == 0 ? 16 : 0) // Add padding to the first element
-                        }
+                        CalendarView()
+                            .frame(width: UIScreen.main.bounds.width / 2 - 64, height: 400)
+                            .padding(.trailing, 32)
+
+                        GoalView()
+                            .frame(width: UIScreen.main.bounds.width / 2 - 64, height: 400)
                     }
                 }
-                .frame(height: 120)
-
-                // Another horizontally scrollable list with dummy elements
-                ScrollView(.horizontal, showsIndicators: false) {
+            }
+            .padding(.top, 16)
+            
+            if !dummyList.isEmpty {
+                Button(action: {
+                    // Your action here
+                }) {
                     HStack {
-                        ForEach(0..<items.count, id: \.self) { index in
-                            Text("\(items[index]) \(index + 1)")
-                                .frame(width: 80, height: 80)
-                                .background(Color.green)
-                                .cornerRadius(10)
-                                .padding(.leading, index == 0 ? 16 : 0) // Add padding to the first element
-                        }
+                        Image(systemName: "play.circle.fill")
+                            .font(.system(size: 24))
+                            .bold()
+                            .padding(.trailing, 20)
+                        Text("Review All (\(dummyList.count))")
+                            .font(.system(size: 20))
+                            .bold()
                     }
+                    .padding(.horizontal, 40)
+                    .padding(.vertical, 25)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(80)
+                    .shadow(radius: 5)
                 }
-                .frame(height: 100)
+                .padding(.bottom, 16)
             }
         }
     }
 }
 
-#Preview{
-    HomeView()
+// Preview provider
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+    }
 }

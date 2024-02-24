@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD345B5A2B89DB5600482A37 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD345B592B89DB5500482A37 /* GoalView.swift */; };
 		CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A265A2B851795006627BF /* f_sharpApp.swift */; };
 		CD8A265D2B851795006627BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A265C2B851795006627BF /* ContentView.swift */; };
 		CD8A265F2B851797006627BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD8A265E2B851797006627BF /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD345B592B89DB5500482A37 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		CD8A26572B851795006627BF /* f_sharp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = f_sharp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A265A2B851795006627BF /* f_sharpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = f_sharpApp.swift; sourceTree = "<group>"; };
 		CD8A265C2B851795006627BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				CDE6361F2B879CFA00D383B0 /* HomeView.swift */,
 				CDE636212B879D3600D383B0 /* SettingsView.swift */,
 				CDE636232B88094F00D383B0 /* CalendarView.swift */,
+				CD345B592B89DB5500482A37 /* GoalView.swift */,
 			);
 			path = f_sharp;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				CDE636242B88094F00D383B0 /* CalendarView.swift in Sources */,
 				CDE636202B879CFA00D383B0 /* HomeView.swift in Sources */,
 				CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */,
+				CD345B5A2B89DB5600482A37 /* GoalView.swift in Sources */,
 				CDE6361B2B85DDAA00D383B0 /* StaffLinesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
