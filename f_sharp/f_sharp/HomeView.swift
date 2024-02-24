@@ -18,21 +18,28 @@ struct HomeView: View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView {
                 VStack(alignment: .leading) {
-                    GeometryReader {geometry in
-                        HStack {
-                            CalendarView()
-                                .frame(width: geometry.size.width / 2 - 32, height: 450)
-                                .padding(.horizontal, 32)
+                    Text("Home")
+                        .font(.system(size: 48, weight: .heavy, design: .default))
+                        .padding(32)
+                    
+                    HStack {
+                        CalendarView()
+                            .frame(maxWidth: .infinity, idealHeight: 450)
+                            .padding(.trailing, 16)
 
-                            GoalView()
-                                .frame(width: geometry.size.width / 2 - 48, height: 450)
-                                .padding(.leading, -16)
-                                .padding(.trailing, 32)
-                        }
+                        GoalView()
+                            .frame(maxWidth: .infinity, idealHeight: 450)
+                            .padding(.leading, 16)
                     }
+                    .padding(.horizontal, 32)
+                    
+                    Text("Jump back in")
+                        .font(.largeTitle)
+                        .bold()
+                        .padding(.horizontal, 32)
+                        .padding(.vertical, 16)
                 }
             }
-            .padding(.top, 16)
             
             if !dummyList.isEmpty {
                     Button(action: {

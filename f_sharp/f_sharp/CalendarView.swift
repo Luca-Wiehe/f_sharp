@@ -12,8 +12,7 @@ struct CalendarView: View {
         let offset = (weekdayOfFirst + 5) % 7 // Adjusting for Monday start
         var days = Array(repeating: "", count: offset) + (1...totalDays).map { String($0) }
         
-        // Ensure the grid always has 6 rows
-        let totalCells = 6 * 7 // 6 rows, 7 columns
+        let totalCells = 6 * 7
         days.append(contentsOf: Array(repeating: "", count: totalCells - days.count))
         
         return days
@@ -82,7 +81,7 @@ struct CalendarView: View {
                             .frame(width: 40, height: 40)
                     }
                 }
-                Divider().background(Color(red: 0.9, green: 0.9, blue: 0.9))
+                Divider().background(Color(UIColor.secondarySystemBackground))
             }
             .padding(.horizontal, 32)
             
@@ -90,10 +89,10 @@ struct CalendarView: View {
                 ForEach(daysInMonth, id: \.self) { day in
                     Text(day)
                         .frame(width: 40, height: 40)
-                        .background(isToday(date: day) ? Circle().fill(Color(red: 0.99, green: 0.99, blue: 0.99)) : Circle().fill(Color.clear))
+                        .background(isToday(date: day) ? Circle().fill(Color(UIColor.secondarySystemBackground)) : Circle().fill(Color.clear))
                         .overlay(
                             Circle()
-                                .stroke(Color(red: 0.7, green: 0.7, blue: 0.7), lineWidth: isToday(date: day) ? 1 : 0)
+                                .stroke(Color(UIColor.secondarySystemBackground), lineWidth: isToday(date: day) ? 1 : 0)
                         )
                 }
             }
