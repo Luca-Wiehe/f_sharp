@@ -23,7 +23,7 @@ struct GoalView: View {
             Image("piano")
                 .resizable()
                 .scaledToFill()
-                .frame(height: 300)
+                .frame(height: 350)
                 .cornerRadius(20, corners: [.topLeft, .topRight])
             
             ZStack {
@@ -64,6 +64,5 @@ struct GoalView: View {
             RoundedRectangle(cornerRadius: 20)
                 .stroke(Color.gray, lineWidth: 1)
         )
-        .padding()
     }
 }

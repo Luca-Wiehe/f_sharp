@@ -73,7 +73,7 @@ struct CalendarView: View {
                 }
                 .disabled(Calendar.current.isDateInToday(currentDate) || Calendar.current.compare(currentDate, to: Date(), toGranularity: .month) == .orderedDescending)
             }
-            .padding()
+            .padding(32)
             
             VStack {
                 LazyVGrid(columns: columns, spacing: 10) {
@@ -84,6 +84,7 @@ struct CalendarView: View {
                 }
                 Divider().background(Color(red: 0.9, green: 0.9, blue: 0.9))
             }
+            .padding(.horizontal, 32)
             
             LazyVGrid(columns: columns, spacing: 10) {
                 ForEach(daysInMonth, id: \.self) { day in
@@ -96,8 +97,10 @@ struct CalendarView: View {
                         )
                 }
             }
+            .padding(.horizontal, 32)
         }
-        .padding()
+        .background(Color(UIColor.systemBackground))
+        .cornerRadius(20)
         .gesture(
             DragGesture().onEnded { value in
                 if value.translation.width > 100 {

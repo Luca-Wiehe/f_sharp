@@ -18,41 +18,47 @@ struct HomeView: View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView {
                 VStack(alignment: .leading) {
-                    HStack {
-                        CalendarView()
-                            .frame(width: UIScreen.main.bounds.width / 2 - 64, height: 400)
-                            .padding(.trailing, 32)
+                    GeometryReader {geometry in
+                        HStack {
+                            CalendarView()
+                                .frame(width: geometry.size.width / 2 - 32, height: 450)
+                                .padding(.horizontal, 32)
 
-                        GoalView()
-                            .frame(width: UIScreen.main.bounds.width / 2 - 64, height: 400)
+                            GoalView()
+                                .frame(width: geometry.size.width / 2 - 48, height: 450)
+                                .padding(.leading, -16)
+                                .padding(.trailing, 32)
+                        }
                     }
                 }
             }
             .padding(.top, 16)
             
             if !dummyList.isEmpty {
-                Button(action: {
-                    // Your action here
-                }) {
-                    HStack {
-                        Image(systemName: "play.circle.fill")
-                            .font(.system(size: 24))
-                            .bold()
-                            .padding(.trailing, 20)
-                        Text("Review All (\(dummyList.count))")
-                            .font(.system(size: 20))
-                            .bold()
+                    Button(action: {
+                        // Your action here
+                    }) {
+                        HStack {
+                            Image(systemName: "play.circle.fill")
+                                .font(.system(size: 24))
+                                .bold()
+                                .padding(.trailing, 20)
+                            Text("Review All (\(dummyList.count))")
+                                .font(.system(size: 20))
+                                .bold()
+                        }
+                        .padding(.horizontal, 30)
+                        .padding(.vertical, 20)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(80)
+                        .shadow(radius: 5)
                     }
-                    .padding(.horizontal, 40)
-                    .padding(.vertical, 25)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(80)
-                    .shadow(radius: 5)
+                    .padding(.bottom, 16)
+                    .padding(.trailing, 36)
                 }
-                .padding(.bottom, 16)
-            }
         }
+        .background(Color(UIColor.secondarySystemBackground))
     }
 }
 
