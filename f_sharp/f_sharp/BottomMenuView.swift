@@ -1,8 +1,14 @@
-//
-//  BottomMenuView.swift
-//  f_sharp
-//
-//  Created by Luca Wiehe on 26.02.24.
-//
+import SwiftUI
 
-import Foundation
+struct BottomMenuView: View {
+    var body: some View {
+        // Your menu content here
+        VStack {
+            Text("Menu Content")
+                .font(.largeTitle)
+            Button("Dismiss") {
+                // Dismiss action
+            }
+        }
+    }
+}

@@ -98,7 +98,7 @@ struct CalendarView: View {
             }
             .padding(.horizontal, 32)
         }
-        .background(Color(UIColor.systemBackground))
+        .background(Color(UIColor.secondarySystemBackground))
         .cornerRadius(20)
         .gesture(
             DragGesture().onEnded { value in

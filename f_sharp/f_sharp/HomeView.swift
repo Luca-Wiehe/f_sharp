@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     // Existing dummy data for the scrollable lists
     let items = Array(repeating: "Item", count: 10)
     
@@ -65,13 +66,6 @@ struct HomeView: View {
                     .padding(.trailing, 36)
                 }
         }
-        .background(Color(UIColor.secondarySystemBackground))
-    }
-}
-
-// Preview provider
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
+        .background(Color(UIColor.systemBackground))
     }
 }

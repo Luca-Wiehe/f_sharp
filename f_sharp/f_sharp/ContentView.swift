@@ -1,14 +1,8 @@
-//
-//  ContentView.swift
-//  f_sharp
-//
-//  Created by Luca Wiehe on 20.02.24.
-//
-
 import SwiftUI
-import SwiftSVG
 
 struct ContentView: View {
+    @EnvironmentObject var popupManager: PopupManager
+    
     var body: some View {
         TabView {
             HomeView()
@@ -16,29 +10,38 @@ struct ContentView: View {
                     Label("Home", systemImage: "house")
                 }
             
-            Text("Practice")
+            PracticeView()
                 .tabItem {
                     Label("Practice", systemImage: "pianokeys")
                 }
             
-            Text("Listen")
+            ListenView()
                 .tabItem {
                     Label("Listen", systemImage: "headphones")
                 }
 
-            Text("Search")
+            SearchView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
 
             SettingsView()
                 .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    Label("Profile", systemImage: "person")
                 }
         }
+        .overlay(
+            PopupComponent(isShown: $popupManager.isShown) {
+                popupManager.content
+            }
+        )
     }
 }
 
-#Preview {
-    ContentView()
+// Preview provider
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .environmentObject(PopupManager())
+    }
 }

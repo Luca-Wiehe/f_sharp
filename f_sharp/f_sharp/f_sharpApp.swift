@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct f_sharpApp: App {
+    var popupManager = PopupManager()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(popupManager)
         }
     }
 }

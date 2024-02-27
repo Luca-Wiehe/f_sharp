@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD1957502B8AB77700B1E7B5 /* ListenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD19574F2B8AB77700B1E7B5 /* ListenView.swift */; };
+		CD1957522B8B3E5200B1E7B5 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1957512B8B3E5200B1E7B5 /* PracticeView.swift */; };
+		CD1957542B8B3ED500B1E7B5 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1957532B8B3ED500B1E7B5 /* SearchView.swift */; };
+		CD1957562B8CD49900B1E7B5 /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1957552B8CD49900B1E7B5 /* BottomMenuView.swift */; };
+		CD19575A2B8CE68400B1E7B5 /* PopupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1957592B8CE68400B1E7B5 /* PopupComponent.swift */; };
+		CD19575C2B8CEB3C00B1E7B5 /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD19575B2B8CEB3C00B1E7B5 /* PopupManager.swift */; };
+		CD19575E2B8D4C6E00B1E7B5 /* GoalPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD19575D2B8D4C6E00B1E7B5 /* GoalPopup.swift */; };
 		CD345B5A2B89DB5600482A37 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD345B592B89DB5500482A37 /* GoalView.swift */; };
 		CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A265A2B851795006627BF /* f_sharpApp.swift */; };
 		CD8A265D2B851795006627BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A265C2B851795006627BF /* ContentView.swift */; };
@@ -40,6 +47,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD19574F2B8AB77700B1E7B5 /* ListenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenView.swift; sourceTree = "<group>"; };
+		CD1957512B8B3E5200B1E7B5 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
+		CD1957532B8B3ED500B1E7B5 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		CD1957552B8CD49900B1E7B5 /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
+		CD1957592B8CE68400B1E7B5 /* PopupComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupComponent.swift; sourceTree = "<group>"; };
+		CD19575B2B8CEB3C00B1E7B5 /* PopupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupManager.swift; sourceTree = "<group>"; };
+		CD19575D2B8D4C6E00B1E7B5 /* GoalPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPopup.swift; sourceTree = "<group>"; };
 		CD345B592B89DB5500482A37 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		CD8A26572B851795006627BF /* f_sharp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = f_sharp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A265A2B851795006627BF /* f_sharpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = f_sharpApp.swift; sourceTree = "<group>"; };
@@ -115,6 +129,13 @@
 				CDE636212B879D3600D383B0 /* SettingsView.swift */,
 				CDE636232B88094F00D383B0 /* CalendarView.swift */,
 				CD345B592B89DB5500482A37 /* GoalView.swift */,
+				CD19574F2B8AB77700B1E7B5 /* ListenView.swift */,
+				CD1957512B8B3E5200B1E7B5 /* PracticeView.swift */,
+				CD1957532B8B3ED500B1E7B5 /* SearchView.swift */,
+				CD1957552B8CD49900B1E7B5 /* BottomMenuView.swift */,
+				CD1957592B8CE68400B1E7B5 /* PopupComponent.swift */,
+				CD19575B2B8CEB3C00B1E7B5 /* PopupManager.swift */,
+				CD19575D2B8D4C6E00B1E7B5 /* GoalPopup.swift */,
 			);
 			path = f_sharp;
 			sourceTree = "<group>";
@@ -280,13 +301,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD1957542B8B3ED500B1E7B5 /* SearchView.swift in Sources */,
 				CDE636222B879D3600D383B0 /* SettingsView.swift in Sources */,
 				CD8A265D2B851795006627BF /* ContentView.swift in Sources */,
 				CDE636242B88094F00D383B0 /* CalendarView.swift in Sources */,
 				CDE636202B879CFA00D383B0 /* HomeView.swift in Sources */,
+				CD19575A2B8CE68400B1E7B5 /* PopupComponent.swift in Sources */,
 				CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */,
+				CD1957562B8CD49900B1E7B5 /* BottomMenuView.swift in Sources */,
+				CD19575C2B8CEB3C00B1E7B5 /* PopupManager.swift in Sources */,
+				CD1957502B8AB77700B1E7B5 /* ListenView.swift in Sources */,
 				CD345B5A2B89DB5600482A37 /* GoalView.swift in Sources */,
+				CD1957522B8B3E5200B1E7B5 /* PracticeView.swift in Sources */,
 				CDE6361B2B85DDAA00D383B0 /* StaffLinesView.swift in Sources */,
+				CD19575E2B8D4C6E00B1E7B5 /* GoalPopup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,8 @@ struct RoundedCorner: Shape {
 }
 
 struct GoalView: View {
+    @EnvironmentObject var popupManager: PopupManager
+    
     var body: some View {
         VStack(spacing: 0) {
             Image("piano")
@@ -44,7 +46,8 @@ struct GoalView: View {
                     }
                     Spacer()
                     Button(action: {
-                        // Action for button tap
+                        popupManager.isShown = true
+                        popupManager.content = AnyView(GoalPopup())
                     }) {
                         Text("Open")
                             .bold()
@@ -55,7 +58,7 @@ struct GoalView: View {
                             .cornerRadius(30)
                     }
                 }
-                        .padding()
+                .padding()
             }
             .frame(height: 100)
         }
