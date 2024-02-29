@@ -4,44 +4,88 @@ struct GoalPopup: View {
     @State private var titleOfGoal: String = ""
     @State private var timeHorizon: String = "Weekly"
     @State private var goalMeasure: String = "# Practice Sessions"
-    
-    let timeHorizonOptions = ["Weekly", "Monthly"]
+    @State private var numberOfSessions: String = ""
+    @State private var practiceHours: String = ""
+    @State private var practiceMinutes: String = ""
+    @State private var numberOfPatterns: String = ""
+
+    let timeHorizonOptions = ["Daily", "Weekly", "Monthly", "Never"]
     let goalMeasureOptions = ["# Practice Sessions", "Practice Time", "# Patterns"]
 
     var body: some View {
         VStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    TextField("What is your goal?", text: $titleOfGoal)
+            VStack(alignment: .leading, spacing: 20) {
+                TextField("Goal", text: $titleOfGoal)
+                    .padding()
+                    .background(Color.primary.opacity(0.1))
+                    .foregroundColor(.primary)
+                    .cornerRadius(10)
+                    .font(.system(.largeTitle, design: .default).weight(.bold))
+
+                Text("Repeat")
+                    .font(.title).bold()
+                    .padding(.bottom, 5)
+                
+                customPicker(options: timeHorizonOptions, selection: $timeHorizon)
+                
+                Text("Measurement")
+                    .font(.title).bold()
+                    .padding(.vertical, 5)
+                
+                customPicker(options: goalMeasureOptions, selection: $goalMeasure)
+                
+                if goalMeasure == "# Practice Sessions" {
+                    TextField("Number of Sessions", text: $numberOfSessions)
+                        .keyboardType(.numberPad)
                         .padding()
                         .background(Color.primary.opacity(0.1))
                         .foregroundColor(.primary)
                         .cornerRadius(10)
-                        .font(.system(.largeTitle, design: .default).weight(.bold))
-
-                    Text("How frequently should your goal repeat?")
-                        .font(.title).bold()
-                        .padding(.bottom, 5)
-                    
-                    customPicker(options: timeHorizonOptions, selection: $timeHorizon)
-                    
-                    Text("Specify your goal details")
-                        .font(.title).bold()
-                        .padding(.vertical, 5)
-                    
-                    customPicker(options: goalMeasureOptions, selection: $goalMeasure)
+                        .font(.system(size: 24, weight: .bold))
+                } else if goalMeasure == "Practice Time" {
+                    HStack {
+                        TextField("Hours", text: $practiceHours)
+                            .keyboardType(.numberPad)
+                            .padding()
+                            .background(Color.primary.opacity(0.1))
+                            .foregroundColor(.primary)
+                            .cornerRadius(10)
+                            .font(.system(size: 24, weight: .bold))
+                            .onReceive(practiceHours.publisher.collect()) {
+                                practiceHours = String($0.prefix(2)).filter { "0123456789".contains($0) }
+                            }
+                        
+                        TextField("Minutes", text: $practiceMinutes)
+                            .keyboardType(.numberPad)
+                            .padding()
+                            .background(Color.primary.opacity(0.1))
+                            .foregroundColor(.primary)
+                            .cornerRadius(10)
+                            .font(.system(size: 24, weight: .bold))
+                            .onReceive(practiceMinutes.publisher.collect()) {
+                                practiceMinutes = String($0.prefix(2)).filter { "0123456789".contains($0) }
+                                if let intValue = Int(practiceMinutes), intValue > 59 {
+                                    practiceMinutes = "59"
+                                }
+                            }
+                    }
+                } else if goalMeasure == "# Patterns" {
+                    TextField("Number of Patterns", text: $numberOfPatterns)
+                        .keyboardType(.numberPad)
+                        .padding()
+                        .background(Color.primary.opacity(0.1))
+                        .foregroundColor(.primary)
+                        .cornerRadius(10)
+                        .font(.system(size: 24, weight: .bold))
                 }
-                .padding()
             }
-            
-            Spacer() // Pushes the button to the bottom when ScrollView is not full
+            .padding()
             
             Button(action: {
-                // Implement your action here
                 print("Goal added") // Placeholder action
             }) {
                 Text("Add Goal")
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, minHeight: 44)
                     .background(Color.blue)
@@ -71,7 +115,6 @@ struct GoalPopup: View {
                     }
             }
         }
-        .padding(.horizontal, -10)
     }
     
     func backgroundForOption(_ option: String, selectedOption: String) -> some View {

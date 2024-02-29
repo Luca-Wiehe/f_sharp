@@ -16,8 +16,9 @@ struct PopupComponent<Content: View>: View {
                 VStack {
                     self.content()
                 }
-                .frame(maxWidth: 600, maxHeight: 800)
-                .padding(30)
+                .fixedSize(horizontal: false, vertical: true) // width fixed, height fit-content
+                .frame(maxWidth: 600)
+                .padding(40)
                 .background(Color(UIColor.secondarySystemBackground))
                 .cornerRadius(30)
                 .shadow(radius: 20)
