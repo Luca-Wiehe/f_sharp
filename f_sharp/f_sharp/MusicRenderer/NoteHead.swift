@@ -1,26 +1,23 @@
 import SwiftUI
 
-struct MyView: View {
-    var body: some View {
-        TwoEllipsesShape(isCutout: true)
-            .fill(Color.primary) // Apply fill first to fill the shape.
-            .overlay( // Then overlay the stroke on top of the filled shape.
-                TwoEllipsesShape(isCutout: true)
-                    .stroke(Color.black, lineWidth: 2)
-            )
-            .frame(width: 200, height: 200)
-    }
-}
-
-struct TwoEllipsesShape: Shape {
+struct NoteHead: Shape {
     var isCutout: Bool
     
     func path(in rect: CGRect) -> Path {
         var path = Path()
         
-        // Define the rectangles for the outer and inner ellipses.
-        let outerEllipseRect = CGRect(x: rect.minX + 25, y: rect.minY + 10, width: rect.width - 50, height: rect.height - 20)
-        let innerEllipseRect = outerEllipseRect.insetBy(dx: 40, dy: 20)
+        // Calculate proportions based on the rect's size.
+        let marginHorizontal = rect.width * 0.125 // Adjusted for proportionality
+        let marginVertical = rect.height * 0.05 // Adjusted for proportionality
+        let innerInsetHorizontal = rect.width * 0.2 // Adjusted for proportionality
+        let innerInsetVertical = rect.height * 0.1 // Adjusted for proportionality
+        
+        // Define the rectangles for the outer and inner ellipses based on the calculated proportions.
+        let outerEllipseRect = CGRect(x: rect.minX + marginHorizontal,
+                                      y: rect.minY + marginVertical,
+                                      width: rect.width - 2 * marginHorizontal,
+                                      height: rect.height - 2 * marginVertical)
+        let innerEllipseRect = outerEllipseRect.insetBy(dx: innerInsetHorizontal, dy: innerInsetVertical)
         
         // Add the outer ellipse to the path.
         path.addEllipse(in: outerEllipseRect)
@@ -29,7 +26,7 @@ struct TwoEllipsesShape: Shape {
         var innerPath = Path()
         innerPath.addEllipse(in: innerEllipseRect)
         
-        // Cut out the inner ellipse from the outer one if isCutout is true.
+        // Cut out the inner ellipse from the outer one if isCutout is true, or add it otherwise.
         if isCutout {
             path = path.subtracting(innerPath)
         } else {
@@ -49,12 +46,5 @@ struct TwoEllipsesShape: Shape {
         path = path.offsetBy(dx: offsetX, dy: offsetY)
         
         return path
-    }
-}
-
-// Preview
-struct MyView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyView()
     }
 }

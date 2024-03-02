@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CD006CDF2B9270480086AADE /* NoteHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD006CDE2B9270480086AADE /* NoteHead.swift */; };
+		CD006CE22B9284860086AADE /* StaffLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD006CE12B9284860086AADE /* StaffLines.swift */; };
+		CD006CE42B9285B80086AADE /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD006CE32B9285B80086AADE /* RenderView.swift */; };
 		CD1957502B8AB77700B1E7B5 /* ListenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD19574F2B8AB77700B1E7B5 /* ListenView.swift */; };
 		CD1957522B8B3E5200B1E7B5 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1957512B8B3E5200B1E7B5 /* PracticeView.swift */; };
 		CD1957542B8B3ED500B1E7B5 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1957532B8B3ED500B1E7B5 /* SearchView.swift */; };
@@ -15,6 +17,10 @@
 		CD19575A2B8CE68400B1E7B5 /* PopupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1957592B8CE68400B1E7B5 /* PopupComponent.swift */; };
 		CD19575C2B8CEB3C00B1E7B5 /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD19575B2B8CEB3C00B1E7B5 /* PopupManager.swift */; };
 		CD19575E2B8D4C6E00B1E7B5 /* GoalPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD19575D2B8D4C6E00B1E7B5 /* GoalPopup.swift */; };
+		CD1F9B6B2B92C1E000186442 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B6A2B92C1E000186442 /* Note.swift */; };
+		CD1F9B6D2B93143000186442 /* NoteFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B6C2B93143000186442 /* NoteFlag.swift */; };
+		CD1F9B6F2B932D7900186442 /* Screenshot 2024-03-02 at 10.48.24.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1F9B6E2B932D7800186442 /* Screenshot 2024-03-02 at 10.48.24.png */; };
+		CD1F9B722B93352900186442 /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CD1F9B712B93352900186442 /* PureSwiftUI */; };
 		CD345B5A2B89DB5600482A37 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD345B592B89DB5500482A37 /* GoalView.swift */; };
 		CD669D2B2B8F25550074CF1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD669D2A2B8F25550074CF1C /* ContentView.swift */; };
 		CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A265A2B851795006627BF /* f_sharpApp.swift */; };
@@ -49,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		CD006CDE2B9270480086AADE /* NoteHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHead.swift; sourceTree = "<group>"; };
+		CD006CE12B9284860086AADE /* StaffLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffLines.swift; sourceTree = "<group>"; };
+		CD006CE32B9285B80086AADE /* RenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderView.swift; sourceTree = "<group>"; };
 		CD19574F2B8AB77700B1E7B5 /* ListenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenView.swift; sourceTree = "<group>"; };
 		CD1957512B8B3E5200B1E7B5 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		CD1957532B8B3ED500B1E7B5 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -56,6 +64,9 @@
 		CD1957592B8CE68400B1E7B5 /* PopupComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupComponent.swift; sourceTree = "<group>"; };
 		CD19575B2B8CEB3C00B1E7B5 /* PopupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupManager.swift; sourceTree = "<group>"; };
 		CD19575D2B8D4C6E00B1E7B5 /* GoalPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPopup.swift; sourceTree = "<group>"; };
+		CD1F9B6A2B92C1E000186442 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		CD1F9B6C2B93143000186442 /* NoteFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFlag.swift; sourceTree = "<group>"; };
+		CD1F9B6E2B932D7800186442 /* Screenshot 2024-03-02 at 10.48.24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot 2024-03-02 at 10.48.24.png"; sourceTree = "<group>"; };
 		CD345B592B89DB5500482A37 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		CD669D2A2B8F25550074CF1C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CD8A26572B851795006627BF /* f_sharp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = f_sharp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD1F9B722B93352900186442 /* PureSwiftUI in Frameworks */,
 				CDE6361E2B86C79100D383B0 /* SwiftSVG in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,6 +111,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD006CE02B9282BA0086AADE /* MusicRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				CD006CDE2B9270480086AADE /* NoteHead.swift */,
+				CD006CE12B9284860086AADE /* StaffLines.swift */,
+				CD006CE32B9285B80086AADE /* RenderView.swift */,
+				CD1F9B6A2B92C1E000186442 /* Note.swift */,
+				CD1F9B6C2B93143000186442 /* NoteFlag.swift */,
+			);
+			path = MusicRenderer;
+			sourceTree = "<group>";
+		};
 		CD8A264E2B851794006627BF = {
 			isa = PBXGroup;
 			children = (
@@ -122,9 +146,11 @@
 		CD8A26592B851795006627BF /* f_sharp */ = {
 			isa = PBXGroup;
 			children = (
+				CD006CE02B9282BA0086AADE /* MusicRenderer */,
 				CD669D2A2B8F25550074CF1C /* ContentView.swift */,
 				CD8A265A2B851795006627BF /* f_sharpApp.swift */,
 				CD8A265E2B851797006627BF /* Assets.xcassets */,
+				CD1F9B6E2B932D7800186442 /* Screenshot 2024-03-02 at 10.48.24.png */,
 				CD8A26602B851797006627BF /* Preview Content */,
 				CDE6361A2B85DDAA00D383B0 /* StaffLinesView.swift */,
 				CDE6361F2B879CFA00D383B0 /* HomeView.swift */,
@@ -138,7 +164,6 @@
 				CD1957592B8CE68400B1E7B5 /* PopupComponent.swift */,
 				CD19575B2B8CEB3C00B1E7B5 /* PopupManager.swift */,
 				CD19575D2B8D4C6E00B1E7B5 /* GoalPopup.swift */,
-				CD006CDE2B9270480086AADE /* NoteHead.swift */,
 			);
 			path = f_sharp;
 			sourceTree = "<group>";
@@ -186,6 +211,7 @@
 			name = f_sharp;
 			packageProductDependencies = (
 				CDE6361D2B86C79100D383B0 /* SwiftSVG */,
+				CD1F9B712B93352900186442 /* PureSwiftUI */,
 			);
 			productName = f_sharp;
 			productReference = CD8A26572B851795006627BF /* f_sharp.app */;
@@ -261,6 +287,7 @@
 			mainGroup = CD8A264E2B851794006627BF;
 			packageReferences = (
 				CDE6361C2B86C79100D383B0 /* XCRemoteSwiftPackageReference "SwiftSVG" */,
+				CD1F9B702B93352900186442 /* XCRemoteSwiftPackageReference "pure-swift-ui" */,
 			);
 			productRefGroup = CD8A26582B851795006627BF /* Products */;
 			projectDirPath = "";
@@ -279,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD8A26622B851797006627BF /* Preview Assets.xcassets in Resources */,
+				CD1F9B6F2B932D7900186442 /* Screenshot 2024-03-02 at 10.48.24.png in Resources */,
 				CD8A265F2B851797006627BF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,12 +336,16 @@
 				CDE636222B879D3600D383B0 /* SettingsView.swift in Sources */,
 				CD669D2B2B8F25550074CF1C /* ContentView.swift in Sources */,
 				CDE636242B88094F00D383B0 /* CalendarView.swift in Sources */,
+				CD006CE42B9285B80086AADE /* RenderView.swift in Sources */,
+				CD1F9B6B2B92C1E000186442 /* Note.swift in Sources */,
 				CDE636202B879CFA00D383B0 /* HomeView.swift in Sources */,
 				CD19575A2B8CE68400B1E7B5 /* PopupComponent.swift in Sources */,
 				CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */,
 				CD1957562B8CD49900B1E7B5 /* BottomMenuView.swift in Sources */,
 				CD19575C2B8CEB3C00B1E7B5 /* PopupManager.swift in Sources */,
+				CD1F9B6D2B93143000186442 /* NoteFlag.swift in Sources */,
 				CD1957502B8AB77700B1E7B5 /* ListenView.swift in Sources */,
+				CD006CE22B9284860086AADE /* StaffLines.swift in Sources */,
 				CD345B5A2B89DB5600482A37 /* GoalView.swift in Sources */,
 				CD1957522B8B3E5200B1E7B5 /* PracticeView.swift in Sources */,
 				CDE6361B2B85DDAA00D383B0 /* StaffLinesView.swift in Sources */,
@@ -644,6 +676,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CD1F9B702B93352900186442 /* XCRemoteSwiftPackageReference "pure-swift-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CodeSlicing/pure-swift-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
 		CDE6361C2B86C79100D383B0 /* XCRemoteSwiftPackageReference "SwiftSVG" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mchoe/SwiftSVG.git";
@@ -655,6 +695,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CD1F9B712B93352900186442 /* PureSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD1F9B702B93352900186442 /* XCRemoteSwiftPackageReference "pure-swift-ui" */;
+			productName = PureSwiftUI;
+		};
 		CDE6361D2B86C79100D383B0 /* SwiftSVG */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CDE6361C2B86C79100D383B0 /* XCRemoteSwiftPackageReference "SwiftSVG" */;
