@@ -7,9 +7,12 @@ struct RenderView: View {
         ZStack (alignment: .leading) {
             StaffLines()
             Note(noteSize: CGSize(width: 26, height: 26), isCutout: false, stemType: 2, flagType: 2)
-                .offset(x: 20, y: 7)
+                .offset(x: 80)
+            Clef()
+                .frame(width: 50, height: 125)
+                .offset(x: 10)
         }
-        .frame(height: 100)
+        .frame(height: 200)
     }
 }
 
