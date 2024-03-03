@@ -23,6 +23,7 @@
 		CD1F9B742B9374BC00186442 /* QuarterBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B732B9374BC00186442 /* QuarterBreak.swift */; };
 		CD1F9B762B93824B00186442 /* HalfBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B752B93824B00186442 /* HalfBreak.swift */; };
 		CD1F9B782B93874900186442 /* Clef.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B772B93874900186442 /* Clef.swift */; };
+		CD1F9B7A2B93D11A00186442 /* EighthBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B792B93D11A00186442 /* EighthBreak.swift */; };
 		CD345B5A2B89DB5600482A37 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD345B592B89DB5500482A37 /* GoalView.swift */; };
 		CD669D2B2B8F25550074CF1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD669D2A2B8F25550074CF1C /* ContentView.swift */; };
 		CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A265A2B851795006627BF /* f_sharpApp.swift */; };
@@ -71,6 +72,7 @@
 		CD1F9B732B9374BC00186442 /* QuarterBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterBreak.swift; sourceTree = "<group>"; };
 		CD1F9B752B93824B00186442 /* HalfBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfBreak.swift; sourceTree = "<group>"; };
 		CD1F9B772B93874900186442 /* Clef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clef.swift; sourceTree = "<group>"; };
+		CD1F9B792B93D11A00186442 /* EighthBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EighthBreak.swift; sourceTree = "<group>"; };
 		CD345B592B89DB5500482A37 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		CD669D2A2B8F25550074CF1C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CD8A26572B851795006627BF /* f_sharp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = f_sharp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +128,7 @@
 				CD1F9B732B9374BC00186442 /* QuarterBreak.swift */,
 				CD1F9B752B93824B00186442 /* HalfBreak.swift */,
 				CD1F9B772B93874900186442 /* Clef.swift */,
+				CD1F9B792B93D11A00186442 /* EighthBreak.swift */,
 			);
 			path = MusicRenderer;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				CD006CE42B9285B80086AADE /* RenderView.swift in Sources */,
 				CD1F9B6B2B92C1E000186442 /* Note.swift in Sources */,
 				CDE636202B879CFA00D383B0 /* HomeView.swift in Sources */,
+				CD1F9B7A2B93D11A00186442 /* EighthBreak.swift in Sources */,
 				CD19575A2B8CE68400B1E7B5 /* PopupComponent.swift in Sources */,
 				CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */,
 				CD1957562B8CD49900B1E7B5 /* BottomMenuView.swift in Sources */,
