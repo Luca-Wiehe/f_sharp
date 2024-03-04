@@ -4,7 +4,7 @@ struct StaffLines: View {
     @Environment(\.colorScheme) var colorScheme
     
     let numberOfLines = 5
-    let lineSpacing: CGFloat = 20
+    let lineSpacing: CGFloat
     
     var body: some View {
         GeometryReader { geometry in
@@ -30,7 +30,7 @@ struct StaffLines: View {
 
 struct StaffLines_Preview: PreviewProvider {
     static var previews: some View {
-        StaffLines()
+        StaffLines(lineSpacing: 20)
             .frame(height: 100) // Set an appropriate height for the staff lines to display correctly
     }
 }

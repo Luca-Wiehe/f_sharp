@@ -5,7 +5,7 @@ private let flagLayoutConfig = LayoutGuideConfig.grid(columns: 40, rows: 48)
 
 private typealias Curve = (p: CGPoint, cp1: CGPoint, cp2: CGPoint)
 
-struct Clef: Shape {
+struct TrebleClef: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         
@@ -212,11 +212,11 @@ struct Clef: Shape {
     }
 }
 
-struct ClefWrapper_Previews: PreviewProvider {
-    struct ClefWrapper: View {
+struct TrebleClefWrapper_Previews: PreviewProvider {
+    struct TrebleClefWrapper: View {
         var body: some View {
             VStack {
-                Clef()
+                TrebleClef()
                     .fill(.black)
                     .frame(width: 100, height: 250)
                 ZStack {
@@ -224,7 +224,7 @@ struct ClefWrapper_Previews: PreviewProvider {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 250)
-                    Clef()
+                    TrebleClef()
                         .stroke(Color.red, lineWidth: 2)
                         .layoutGuide(flagLayoutConfig)
                         .frame(width: 100, height: 250)
@@ -234,7 +234,7 @@ struct ClefWrapper_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        ClefWrapper()
+        TrebleClefWrapper()
             .showLayoutGuides(true)
     }
 }
