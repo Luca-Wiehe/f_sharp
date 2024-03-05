@@ -5,6 +5,7 @@ struct StaffLines: View {
     
     let numberOfLines = 5
     let lineSpacing: CGFloat
+    let lineHeight: CGFloat
     
     var body: some View {
         GeometryReader { geometry in
@@ -22,7 +23,7 @@ struct StaffLines: View {
                     path.addLine(to: CGPoint(x: geometry.size.width, y: y))
                 }
             }
-            .stroke(style: StrokeStyle(lineWidth: 1, lineCap: .round))
+            .stroke(style: StrokeStyle(lineWidth: lineHeight, lineCap: .round))
             .foregroundColor(colorScheme == .dark ? .white : .black)
         }
     }
@@ -30,7 +31,7 @@ struct StaffLines: View {
 
 struct StaffLines_Preview: PreviewProvider {
     static var previews: some View {
-        StaffLines(lineSpacing: 20)
+        StaffLines(lineSpacing: 20, lineHeight: 1)
             .frame(height: 100) // Set an appropriate height for the staff lines to display correctly
     }
 }

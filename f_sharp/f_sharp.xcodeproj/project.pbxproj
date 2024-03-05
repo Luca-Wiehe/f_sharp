@@ -20,12 +20,20 @@
 		CD1F9B6B2B92C1E000186442 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B6A2B92C1E000186442 /* Note.swift */; };
 		CD1F9B6D2B93143000186442 /* NoteFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B6C2B93143000186442 /* NoteFlag.swift */; };
 		CD1F9B722B93352900186442 /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CD1F9B712B93352900186442 /* PureSwiftUI */; };
-		CD1F9B742B9374BC00186442 /* QuarterBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B732B9374BC00186442 /* QuarterBreak.swift */; };
-		CD1F9B762B93824B00186442 /* HalfBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B752B93824B00186442 /* HalfBreak.swift */; };
+		CD1F9B742B9374BC00186442 /* QuarterRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B732B9374BC00186442 /* QuarterRest.swift */; };
 		CD1F9B782B93874900186442 /* TrebleClef.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B772B93874900186442 /* TrebleClef.swift */; };
-		CD1F9B7A2B93D11A00186442 /* EighthBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B792B93D11A00186442 /* EighthBreak.swift */; };
+		CD1F9B7A2B93D11A00186442 /* EighthRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B792B93D11A00186442 /* EighthRest.swift */; };
 		CD1F9B7C2B961A0F00186442 /* BassClef.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B7B2B961A0F00186442 /* BassClef.swift */; };
 		CD1F9B7E2B961B0900186442 /* TimeSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B7D2B961B0800186442 /* TimeSignature.swift */; };
+		CD1F9B842B97272400186442 /* One.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B832B97272400186442 /* One.swift */; };
+		CD1F9B862B97273C00186442 /* Two.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B852B97273C00186442 /* Two.swift */; };
+		CD1F9B882B97274500186442 /* Three.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B872B97274500186442 /* Three.swift */; };
+		CD1F9B8A2B97274D00186442 /* Four.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B892B97274D00186442 /* Four.swift */; };
+		CD1F9B8C2B97275600186442 /* Five.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B8B2B97275600186442 /* Five.swift */; };
+		CD1F9B8E2B97276000186442 /* Six.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B8D2B97276000186442 /* Six.swift */; };
+		CD1F9B902B97277300186442 /* Seven.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B8F2B97277300186442 /* Seven.swift */; };
+		CD1F9B922B97277E00186442 /* Eight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B912B97277E00186442 /* Eight.swift */; };
+		CD1F9B942B97278800186442 /* Nine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B932B97278800186442 /* Nine.swift */; };
 		CD345B5A2B89DB5600482A37 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD345B592B89DB5500482A37 /* GoalView.swift */; };
 		CD669D2B2B8F25550074CF1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD669D2A2B8F25550074CF1C /* ContentView.swift */; };
 		CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A265A2B851795006627BF /* f_sharpApp.swift */; };
@@ -71,12 +79,20 @@
 		CD19575D2B8D4C6E00B1E7B5 /* GoalPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPopup.swift; sourceTree = "<group>"; };
 		CD1F9B6A2B92C1E000186442 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		CD1F9B6C2B93143000186442 /* NoteFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFlag.swift; sourceTree = "<group>"; };
-		CD1F9B732B9374BC00186442 /* QuarterBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterBreak.swift; sourceTree = "<group>"; };
-		CD1F9B752B93824B00186442 /* HalfBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfBreak.swift; sourceTree = "<group>"; };
+		CD1F9B732B9374BC00186442 /* QuarterRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterRest.swift; sourceTree = "<group>"; };
 		CD1F9B772B93874900186442 /* TrebleClef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrebleClef.swift; sourceTree = "<group>"; };
-		CD1F9B792B93D11A00186442 /* EighthBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EighthBreak.swift; sourceTree = "<group>"; };
+		CD1F9B792B93D11A00186442 /* EighthRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EighthRest.swift; sourceTree = "<group>"; };
 		CD1F9B7B2B961A0F00186442 /* BassClef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BassClef.swift; sourceTree = "<group>"; };
 		CD1F9B7D2B961B0800186442 /* TimeSignature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSignature.swift; sourceTree = "<group>"; };
+		CD1F9B832B97272400186442 /* One.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = One.swift; sourceTree = "<group>"; };
+		CD1F9B852B97273C00186442 /* Two.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Two.swift; sourceTree = "<group>"; };
+		CD1F9B872B97274500186442 /* Three.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Three.swift; sourceTree = "<group>"; };
+		CD1F9B892B97274D00186442 /* Four.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Four.swift; sourceTree = "<group>"; };
+		CD1F9B8B2B97275600186442 /* Five.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Five.swift; sourceTree = "<group>"; };
+		CD1F9B8D2B97276000186442 /* Six.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Six.swift; sourceTree = "<group>"; };
+		CD1F9B8F2B97277300186442 /* Seven.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seven.swift; sourceTree = "<group>"; };
+		CD1F9B912B97277E00186442 /* Eight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eight.swift; sourceTree = "<group>"; };
+		CD1F9B932B97278800186442 /* Nine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nine.swift; sourceTree = "<group>"; };
 		CD345B592B89DB5500482A37 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		CD669D2A2B8F25550074CF1C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CD8A26572B851795006627BF /* f_sharp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = f_sharp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +164,15 @@
 			isa = PBXGroup;
 			children = (
 				CD1F9B7D2B961B0800186442 /* TimeSignature.swift */,
+				CD1F9B832B97272400186442 /* One.swift */,
+				CD1F9B852B97273C00186442 /* Two.swift */,
+				CD1F9B872B97274500186442 /* Three.swift */,
+				CD1F9B892B97274D00186442 /* Four.swift */,
+				CD1F9B8B2B97275600186442 /* Five.swift */,
+				CD1F9B8D2B97276000186442 /* Six.swift */,
+				CD1F9B8F2B97277300186442 /* Seven.swift */,
+				CD1F9B912B97277E00186442 /* Eight.swift */,
+				CD1F9B932B97278800186442 /* Nine.swift */,
 			);
 			path = TimeSignatures;
 			sourceTree = "<group>";
@@ -164,9 +189,8 @@
 		CD1F9B822B961BAB00186442 /* Breaks */ = {
 			isa = PBXGroup;
 			children = (
-				CD1F9B732B9374BC00186442 /* QuarterBreak.swift */,
-				CD1F9B792B93D11A00186442 /* EighthBreak.swift */,
-				CD1F9B752B93824B00186442 /* HalfBreak.swift */,
+				CD1F9B732B9374BC00186442 /* QuarterRest.swift */,
+				CD1F9B792B93D11A00186442 /* EighthRest.swift */,
 			);
 			path = Breaks;
 			sourceTree = "<group>";
@@ -379,24 +403,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD1957542B8B3ED500B1E7B5 /* SearchView.swift in Sources */,
-				CD1F9B762B93824B00186442 /* HalfBreak.swift in Sources */,
+				CD1F9B8A2B97274D00186442 /* Four.swift in Sources */,
 				CDE636222B879D3600D383B0 /* SettingsView.swift in Sources */,
 				CD669D2B2B8F25550074CF1C /* ContentView.swift in Sources */,
+				CD1F9B842B97272400186442 /* One.swift in Sources */,
 				CDE636242B88094F00D383B0 /* CalendarView.swift in Sources */,
 				CD006CE42B9285B80086AADE /* RenderView.swift in Sources */,
+				CD1F9B862B97273C00186442 /* Two.swift in Sources */,
 				CD1F9B6B2B92C1E000186442 /* Note.swift in Sources */,
 				CDE636202B879CFA00D383B0 /* HomeView.swift in Sources */,
-				CD1F9B7A2B93D11A00186442 /* EighthBreak.swift in Sources */,
+				CD1F9B7A2B93D11A00186442 /* EighthRest.swift in Sources */,
 				CD19575A2B8CE68400B1E7B5 /* PopupComponent.swift in Sources */,
+				CD1F9B882B97274500186442 /* Three.swift in Sources */,
 				CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */,
 				CD1957562B8CD49900B1E7B5 /* BottomMenuView.swift in Sources */,
 				CD1F9B7C2B961A0F00186442 /* BassClef.swift in Sources */,
 				CD1F9B782B93874900186442 /* TrebleClef.swift in Sources */,
+				CD1F9B902B97277300186442 /* Seven.swift in Sources */,
 				CD19575C2B8CEB3C00B1E7B5 /* PopupManager.swift in Sources */,
 				CD1F9B6D2B93143000186442 /* NoteFlag.swift in Sources */,
+				CD1F9B8C2B97275600186442 /* Five.swift in Sources */,
+				CD1F9B8E2B97276000186442 /* Six.swift in Sources */,
 				CD1957502B8AB77700B1E7B5 /* ListenView.swift in Sources */,
+				CD1F9B922B97277E00186442 /* Eight.swift in Sources */,
 				CD006CE22B9284860086AADE /* StaffLines.swift in Sources */,
-				CD1F9B742B9374BC00186442 /* QuarterBreak.swift in Sources */,
+				CD1F9B942B97278800186442 /* Nine.swift in Sources */,
+				CD1F9B742B9374BC00186442 /* QuarterRest.swift in Sources */,
 				CD345B5A2B89DB5600482A37 /* GoalView.swift in Sources */,
 				CD1957522B8B3E5200B1E7B5 /* PracticeView.swift in Sources */,
 				CDE6361B2B85DDAA00D383B0 /* StaffLinesView.swift in Sources */,

@@ -7,11 +7,11 @@ struct RenderView: View {
     
     var body: some View {
         ZStack (alignment: .leading) {
-            StaffLines(lineSpacing: 20)
-            EighthBreak()
+            StaffLines(lineSpacing: lineSpacing, lineHeight: lineHeight)
+            EighthRest()
                 .frame(width: 25, height: 50)
                 .offset(x: 200)
-            QuarterBreak()
+            QuarterRest()
                 .frame(width: 25, height: 50)
                 .offset(x: 150)
             Note(noteSize: CGSize(width: 26, height: 26), isCutout: false, stemType: 2, flagType: 2)
@@ -21,13 +21,20 @@ struct RenderView: View {
                 .frame(width: 50, height: 125)
                 .offset(x: 10)
             BassClef()
-                .frame(width: 3.25 * lineSpacing / 1.1905, height: 3.25 * lineSpacing)
-                .offset(x: 250, y: -0.5 * lineSpacing + lineHeight)
+                .frame(width: 3 * (lineHeight + lineSpacing) / 1.1905, height: 3 * (lineHeight + lineSpacing))
+                .offset(x: 250, y: -8)
+            Rectangle()
+                .frame(width: lineSpacing * 1.5, height: lineSpacing / 2)
+                .offset(x: 350, y: -lineSpacing / 4)
+            Rectangle()
+                .frame(width: lineSpacing * 1.5, height: lineSpacing / 2)
+                .offset(x: 400, y: -lineSpacing * 3 / 4)
         }
         .frame(height: 200)
     }
 }
 
 #Preview {
-    RenderView(noteLine: 1, lineHeight: 2, lineSpacing: 20)
+    RenderView(noteLine: 1, lineHeight: 1, lineSpacing: 20)
 }
+      

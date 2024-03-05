@@ -5,7 +5,7 @@ private let flagLayoutConfig = LayoutGuideConfig.grid(columns: 8, rows: 20)
 
 private typealias Curve = (p: CGPoint, cp1: CGPoint, cp2: CGPoint)
 
-struct EighthBreak: Shape {
+struct EighthRest: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         
@@ -98,11 +98,11 @@ struct EighthBreak: Shape {
     }
 }
 
-struct EighthBreakWrapper_Previews: PreviewProvider {
-    struct EighthBreakWrapper: View {
+struct EighthRestWrapper_Previews: PreviewProvider {
+    struct EighthRestWrapper: View {
         var body: some View {
             VStack {
-                EighthBreak()
+                EighthRest()
                     .fill(.black)
                     .frame(width: 100, height: 250)
                 ZStack {
@@ -110,7 +110,7 @@ struct EighthBreakWrapper_Previews: PreviewProvider {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 250)
-                    EighthBreak()
+                    EighthRest()
                         .stroke(Color.red, lineWidth: 2)
                         .layoutGuide(flagLayoutConfig)
                         .frame(width: 100, height: 250)
@@ -120,7 +120,7 @@ struct EighthBreakWrapper_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        EighthBreakWrapper()
+        EighthRestWrapper()
             .showLayoutGuides(true)
     }
 }

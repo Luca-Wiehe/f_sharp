@@ -5,13 +5,13 @@ private let flagLayoutConfig = LayoutGuideConfig.grid(columns: 20, rows: 25)
 
 private typealias Curve = (p: CGPoint, cp1: CGPoint, cp2: CGPoint)
 
-struct QuarterBreak: Shape {
+struct QuarterRest: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         
         let g = flagLayoutConfig.layout(in: rect)
         
-        // checkpoints for quarter-break
+        // checkpoints for quarter-rest
         let p1 = g[5, 0]
         let p2 = g[8, 0]
         let p3 = g[18, 7]
@@ -99,11 +99,11 @@ struct QuarterBreak: Shape {
     }
 }
 
-struct QuarterBreakWrapper_Previews: PreviewProvider {
-    struct QuarterBreakWrapper: View {
+struct QuarterRestWrapper_Previews: PreviewProvider {
+    struct QuarterRestWrapper: View {
         var body: some View {
             VStack {
-                QuarterBreak()
+                QuarterRest()
                     .fill(.black)
                     .frame(width: 100, height: 250)
                 ZStack {
@@ -111,7 +111,7 @@ struct QuarterBreakWrapper_Previews: PreviewProvider {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 250)
-                    QuarterBreak()
+                    QuarterRest()
                         .stroke(Color.black, lineWidth: 2)
                         .layoutGuide(flagLayoutConfig)
                         .frame(width: 100, height: 250)
@@ -121,7 +121,7 @@ struct QuarterBreakWrapper_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        QuarterBreakWrapper()
+        QuarterRestWrapper()
             .showLayoutGuides(true)
     }
 }
