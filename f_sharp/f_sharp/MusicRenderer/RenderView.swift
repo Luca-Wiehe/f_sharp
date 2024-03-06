@@ -29,6 +29,9 @@ struct RenderView: View {
             Rectangle()
                 .frame(width: lineSpacing * 1.5, height: lineSpacing / 2)
                 .offset(x: 400, y: -lineSpacing * 3 / 4)
+            TimeSignature(beatsPerMeasure: 4, beatType: 4)
+                .frame(width: 4 * lineSpacing / 1.1905, height: 4 * lineSpacing - 4)
+                .offset(x: 450)
         }
         .frame(height: 200)
     }

@@ -35,10 +35,7 @@ struct Four: Shape {
         let p17 = g[15, 22]
         let p18 = g[2, 22]
         let p19 = g[0, 20]
-        
-        let cellWidth = rect.width / 30
-        let radius = cellWidth * 2.5  // Radius of two grid cells
-        
+                
         // draw bezier curves between checkpoints
         var curves = [Curve]()
         
@@ -178,7 +175,7 @@ struct Four: Shape {
         path.move(p1)
         
         for curve in curves {
-            path.curve(curve.p, cp1: curve.cp1, cp2: curve.cp2, showControlPoints: true)
+            path.curve(curve.p, cp1: curve.cp1, cp2: curve.cp2, showControlPoints: false)
         }
         
         return path
