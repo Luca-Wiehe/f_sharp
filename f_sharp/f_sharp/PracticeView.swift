@@ -7,7 +7,9 @@ struct Playlist: Identifiable {
     var genre: String
     var patternReferences: [String]
     var maxLength: Int
-    var previewImage: Image
+    var previewImage: Image {
+            Image("genre-\(genre.lowercased())")
+        }
 
     // Initialize the Playlist struct with all properties
     init(title: String, genre: String, patternReferences: [String], maxLength: Int, previewImage: Image) {
@@ -15,7 +17,6 @@ struct Playlist: Identifiable {
         self.genre = genre
         self.patternReferences = patternReferences
         self.maxLength = maxLength
-        self.previewImage = previewImage
     }
 }
 
@@ -24,9 +25,9 @@ struct PracticeView: View {
     @EnvironmentObject var popupManager: PopupManager
     
     let playlists = [
-        Playlist(title: "Playlist 1", genre: "Genre 1", patternReferences: ["Pattern 1A", "Pattern 1B"], maxLength: 5, previewImage: Image(systemName: "music.note.list")),
-        Playlist(title: "Playlist 2", genre: "Genre 2", patternReferences: ["Pattern 2A", "Pattern 2B"], maxLength: 10, previewImage: Image(systemName: "music.quarternote.3")),
-        Playlist(title: "Playlist 3", genre: "Genre 3", patternReferences: ["Pattern 3A", "Pattern 3B"], maxLength: 15, previewImage: Image(systemName: "music.note"))
+        Playlist(title: "Playlist 1", genre: "Classic", patternReferences: ["Pattern 1A", "Pattern 1B"], maxLength: 5, previewImage: Image(systemName: "music.note.list")),
+        Playlist(title: "Playlist 2", genre: "Jazz", patternReferences: ["Pattern 2A", "Pattern 2B"], maxLength: 10, previewImage: Image(systemName: "music.quarternote.3")),
+        Playlist(title: "Playlist 3", genre: "Rock", patternReferences: ["Pattern 3A", "Pattern 3B"], maxLength: 15, previewImage: Image(systemName: "music.note"))
     ]
 
     var body: some View {
@@ -119,23 +120,35 @@ struct PracticeView: View {
                         VStack(spacing: 0) {
                             playlist.previewImage
                                 .resizable()
-                                .scaledToFit()
+                                .scaledToFill()
                                 .frame(width: 200, height: 150)
                                 .cornerRadius(10, corners: [.topLeft, .topRight])
 
                             ZStack {
-                                Color.blue
-                                VStack (alignment: .leading) {
-                                    Text(playlist.genre)
-                                        .foregroundColor(.white.opacity(0.7))
-                                        .font(.headline)
-                                    Text(playlist.title)
-                                        .font(.title)
-                                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                        .foregroundColor(.white)
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(playlist.genre.uppercased()) // add uppercased for genre
+                                            .foregroundColor(.secondary)
+                                            .font(.headline)
+                                        Text(playlist.title)
+                                            .font(.title2) // adjust to your preference
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.primary)
+                                    }
+                                    Spacer()
+                                    Button(action: {
+                                        // Action to download playlist
+                                    }) {
+                                        Image(systemName: "icloud.and.arrow.down") // use your download icon
+                                            .foregroundColor(.blue)
+                                            .font(.title2) // adjust to your preference
+                                    }
                                 }
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 8)
                             }
                             .frame(height: 80)
+                            .background(Color(UIColor.secondarySystemBackground))
                         }
                         .cornerRadius(10)
                         .overlay(
