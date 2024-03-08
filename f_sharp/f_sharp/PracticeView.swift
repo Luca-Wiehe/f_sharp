@@ -7,12 +7,12 @@ struct Playlist: Identifiable {
     var genre: String
     var patternReferences: [String]
     var maxLength: Int
-    var previewImage: Image {
-            Image("genre-\(genre.lowercased())")
+    var previewImageName: String {
+            "genre-\(genre.lowercased())"
         }
 
     // Initialize the Playlist struct with all properties
-    init(title: String, genre: String, patternReferences: [String], maxLength: Int, previewImage: Image) {
+    init(title: String, genre: String, patternReferences: [String], maxLength: Int) {
         self.title = title
         self.genre = genre
         self.patternReferences = patternReferences
@@ -20,141 +20,172 @@ struct Playlist: Identifiable {
     }
 }
 
-// PracticeView implementation
-struct PracticeView: View {
+struct HeaderView: View {
+    var body: some View {
+        HStack {
+            Text("Practice")
+                .font(.system(size: 48, weight: .heavy, design: .default))
+                .padding(32)
+            Spacer()
+        }
+    }
+}
+
+struct SubtitleView: View {
+    var subtitle: String
+    
+    var body: some View {
+            Text(subtitle)
+                .font(.largeTitle)
+                .bold()
+                .padding(.horizontal, 32)
+        }
+}
+
+struct PlaylistCardView: View {
+    var playlist: Playlist
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Image(playlist.previewImageName)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 200, height: 150)
+                .cornerRadius(10, corners: [.topLeft, .topRight])
+            
+            ZStack {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(playlist.genre.uppercased())
+                            .foregroundColor(.secondary)
+                            .font(.headline)
+                        Text(playlist.title)
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.primary)
+                    }
+                    Spacer()
+                    // Placeholder for a button or other interactive element
+                }
+                .padding()
+            }
+            .frame(height: 80)
+            .background(Color(UIColor.secondarySystemBackground))
+        }
+        .cornerRadius(10)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.gray, lineWidth: 1)
+        )
+    }
+}
+
+struct PlaylistManagerCardView: View {
     @EnvironmentObject var popupManager: PopupManager
     
+    private let cardWidth: CGFloat = 200
+        private let cardHeight: CGFloat = 230
+        private let cornerRadius: CGFloat = 15
+        private let buttonSize: CGSize = CGSize(width: 64, height: 64)
+        private let manageButtonHeight: CGFloat = 48
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: cornerRadius)
+            .fill(LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.7)]), startPoint: .top, endPoint: .bottom))
+            .frame(width: cardWidth, height: cardHeight)
+            .shadow(radius: 10)
+            .overlay(contentOverlay)
+    }
+    
+    private var contentOverlay: some View {
+        VStack {
+            Spacer()
+
+            HStack {
+                actionButton(action: showAddNewPopup, icon: "plus", label: "Add New")
+                    .padding(.leading, 8)
+
+                Spacer()
+
+                actionButton(action: viewAllPlaylists, icon: "list.bullet", label: "View All")
+                    .padding(.trailing, 8)
+            }
+
+            Spacer()
+
+            managePlaylistsButton
+                .padding(.bottom, 16)
+        }
+        .padding(.horizontal, 16)
+        .padding(.top, 16)
+    }
+    
+    private func actionButton(action: @escaping () -> Void, icon: String, label: String) -> some View {
+        VStack {
+            Button(action: action) {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.white.opacity(0.7))
+                    .frame(width: buttonSize.width, height: buttonSize.height)
+                    .overlay(
+                        Image(systemName: icon)
+                            .foregroundColor(.blue)
+                    )
+            }
+            Text(label)
+                .font(.caption)
+                .foregroundColor(.white)
+        }
+    }
+    
+    private var managePlaylistsButton: some View {
+        Button(action: managePlaylists) {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.white.opacity(0.7))
+                .frame(height: manageButtonHeight)
+                .overlay(
+                    Text("Manage Playlists")
+                        .foregroundColor(.blue)
+                        .font(.headline)
+                )
+        }
+    }
+    
+    private func showAddNewPopup() {
+        popupManager.isShown = true
+        popupManager.content = AnyView(PlaylistPopup())
+    }
+
+    private func viewAllPlaylists() {
+        // Action to view all playlists
+    }
+
+    private func managePlaylists() {
+        // Action to manage playlists
+    }
+}
+
+// PracticeView implementation
+struct PracticeView: View {
+    
     let playlists = [
-        Playlist(title: "Playlist 1", genre: "Classic", patternReferences: ["Pattern 1A", "Pattern 1B"], maxLength: 5, previewImage: Image(systemName: "music.note.list")),
-        Playlist(title: "Playlist 2", genre: "Jazz", patternReferences: ["Pattern 2A", "Pattern 2B"], maxLength: 10, previewImage: Image(systemName: "music.quarternote.3")),
-        Playlist(title: "Playlist 3", genre: "Rock", patternReferences: ["Pattern 3A", "Pattern 3B"], maxLength: 15, previewImage: Image(systemName: "music.note"))
+        Playlist(title: "Playlist 1", genre: "Classic", patternReferences: ["Pattern 1A", "Pattern 1B"], maxLength: 5),
+        Playlist(title: "Playlist 2", genre: "Jazz", patternReferences: ["Pattern 2A", "Pattern 2B"], maxLength: 10),
+        Playlist(title: "Playlist 3", genre: "Rock", patternReferences: ["Pattern 3A", "Pattern 3B"], maxLength: 15)
     ]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            HStack {
-                Text("Practice")
-                    .font(.system(size: 48, weight: .heavy, design: .default))
-                    .padding(32)
-                Spacer()
-            }
+            HeaderView()
             
-            Text("My Patterns")
-                .font(.largeTitle)
-                .bold()
-                .padding(.horizontal, 32)
+            SubtitleView(subtitle: "My Patterns")
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    RoundedRectangle(cornerRadius: 15)
-                        .fill(LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.7)]), startPoint: .top, endPoint: .bottom))
-                        .frame(width: 200, height: 230)
-                        .shadow(radius: 10)
-                        .overlay(
-                            VStack {
-                                Spacer()
-
-                                HStack {
-                                    VStack {
-                                        Button(action: {
-                                            popupManager.isShown = true
-                                            popupManager.content = AnyView(PlaylistPopup())
-                                        }) {
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .fill(Color.white.opacity(0.7))
-                                                .frame(width: 64, height: 64)
-                                                .overlay(
-                                                    Image(systemName: "plus")
-                                                        .foregroundColor(.blue)
-                                                )
-                                        }
-                                        Text("Add New")
-                                            .font(.caption)
-                                            .foregroundColor(.white)
-                                    }
-                                    .padding(.leading, 8)
-
-                                    Spacer()
-                                    
-                                    VStack {
-                                        Button(action: {
-                                            // Action to view all playlists
-                                        }) {
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .fill(Color.white.opacity(0.7))
-                                                .frame(width: 64, height: 64)
-                                                .overlay(
-                                                    Image(systemName: "list.bullet")
-                                                        .foregroundColor(.blue)
-                                                )
-                                        }
-                                        Text("View All")
-                                            .font(.caption)
-                                            .foregroundColor(.white)
-                                    }
-                                    .padding(.trailing, 8)
-                                }
-
-                                Spacer()
-                                
-                                Button(action: {
-                                    // Action to manage playlists
-                                }) {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color.white.opacity(0.7))
-                                        .frame(height: 48)
-                                        .overlay(
-                                            Text("Manage Playlists")
-                                                .foregroundColor(.blue)
-                                                .font(.headline)
-                                        )
-                                }
-                                .padding(.bottom, 16)
-                            }
-                            .padding(.horizontal, 16)
-                            .padding(.top, 16)
-                        )
-
+                    
+                    PlaylistManagerCardView()
 
                     ForEach(playlists) { playlist in
-                        VStack(spacing: 0) {
-                            playlist.previewImage
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 200, height: 150)
-                                .cornerRadius(10, corners: [.topLeft, .topRight])
-
-                            ZStack {
-                                HStack {
-                                    VStack(alignment: .leading) {
-                                        Text(playlist.genre.uppercased()) // add uppercased for genre
-                                            .foregroundColor(.secondary)
-                                            .font(.headline)
-                                        Text(playlist.title)
-                                            .font(.title2) // adjust to your preference
-                                            .fontWeight(.bold)
-                                            .foregroundColor(.primary)
-                                    }
-                                    Spacer()
-                                    Button(action: {
-                                        // Action to download playlist
-                                    }) {
-                                        Image(systemName: "icloud.and.arrow.down") // use your download icon
-                                            .foregroundColor(.blue)
-                                            .font(.title2) // adjust to your preference
-                                    }
-                                }
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 8)
-                            }
-                            .frame(height: 80)
-                            .background(Color(UIColor.secondarySystemBackground))
-                        }
-                        .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.gray, lineWidth: 1)
-                        )
+                        PlaylistCardView(playlist: playlist)
                     }
                 }
                 .padding(.horizontal, 32)
