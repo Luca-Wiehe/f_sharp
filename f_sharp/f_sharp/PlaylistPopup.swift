@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct PlaylistPopup: View {
+    @EnvironmentObject var popupManager: PopupManager
+    @EnvironmentObject var practiceViewManager: PracticeViewManager
+    
     @State private var playlistName: String = ""
     @State private var selectedGenre: String = "Jazz"
     let genreOptions = ["Jazz", "Rock", "Classic", "Pop", "Other", "Electronic", "Hip Hop", "Blues"]
@@ -24,7 +27,8 @@ struct PlaylistPopup: View {
             .padding()
 
             Button(action: {
-                print("Playlist added") // Placeholder action
+                popupManager.isShown = false
+                practiceViewManager.currentView = .editPlaylist
             }) {
                 Text("Add Playlist")
                     .font(.system(size: 18, weight: .bold))
@@ -65,8 +69,4 @@ struct PlaylistPopup: View {
     func backgroundForOption(_ option: String, selectedOption: String) -> some View {
         LinearGradient(gradient: Gradient(colors: option == selectedOption ? [Color.blue, Color.purple] : [Color.gray.opacity(0.3), Color.gray.opacity(0.3)]), startPoint: .leading, endPoint: .trailing)
     }
-}
-
-#Preview {
-    PlaylistPopup()
 }

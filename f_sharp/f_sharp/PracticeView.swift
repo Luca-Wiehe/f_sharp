@@ -84,10 +84,10 @@ struct PlaylistManagerCardView: View {
     @EnvironmentObject var popupManager: PopupManager
     
     private let cardWidth: CGFloat = 200
-        private let cardHeight: CGFloat = 230
-        private let cornerRadius: CGFloat = 15
-        private let buttonSize: CGSize = CGSize(width: 64, height: 64)
-        private let manageButtonHeight: CGFloat = 48
+    private let cardHeight: CGFloat = 230
+    private let cornerRadius: CGFloat = 15
+    private let buttonSize: CGSize = CGSize(width: 64, height: 64)
+    private let manageButtonHeight: CGFloat = 48
     
     var body: some View {
         RoundedRectangle(cornerRadius: cornerRadius)
@@ -151,6 +151,8 @@ struct PlaylistManagerCardView: View {
     }
     
     private func showAddNewPopup() {
+        @EnvironmentObject var practiceViewManager: PracticeViewManager
+        
         popupManager.isShown = true
         popupManager.content = AnyView(PlaylistPopup())
     }
@@ -164,15 +166,13 @@ struct PlaylistManagerCardView: View {
     }
 }
 
-// PracticeView implementation
-struct PracticeView: View {
-    
+struct PracticeHomeView: View {
     let playlists = [
         Playlist(title: "Playlist 1", genre: "Classic", patternReferences: ["Pattern 1A", "Pattern 1B"], maxLength: 5),
         Playlist(title: "Playlist 2", genre: "Jazz", patternReferences: ["Pattern 2A", "Pattern 2B"], maxLength: 10),
         Playlist(title: "Playlist 3", genre: "Rock", patternReferences: ["Pattern 3A", "Pattern 3B"], maxLength: 15)
     ]
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HeaderView()
@@ -193,5 +193,19 @@ struct PracticeView: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .background(Color(UIColor.systemBackground))
+    }
+}
+
+// PracticeView implementation
+struct PracticeView: View {
+    @EnvironmentObject var practiceViewManager: PracticeViewManager
+
+    var body: some View {
+        switch practiceViewManager.currentView {
+        case .home:
+            PracticeHomeView()
+        case .editPlaylist:
+            EditPlaylistView()
+        }
     }
 }

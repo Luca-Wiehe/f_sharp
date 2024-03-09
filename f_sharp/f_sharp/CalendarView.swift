@@ -86,7 +86,7 @@ struct CalendarView: View {
             .padding(.horizontal, 32)
             
             LazyVGrid(columns: columns, spacing: 10) {
-                ForEach(daysInMonth, id: \.self) { day in
+                ForEach(Array(daysInMonth.enumerated()), id: \.offset) { _, day in
                     Text(day)
                         .frame(width: 40, height: 40)
                         .background(isToday(date: day) ? Circle().fill(Color(UIColor.secondarySystemBackground)) : Circle().fill(Color.clear))

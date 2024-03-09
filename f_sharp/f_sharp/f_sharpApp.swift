@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct f_sharpApp: App {
     var popupManager = PopupManager()
+    var practiceViewManager = PracticeViewManager()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(popupManager)
+                .environmentObject(practiceViewManager)
         }
     }
 }
