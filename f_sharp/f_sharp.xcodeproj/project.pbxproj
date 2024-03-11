@@ -45,6 +45,7 @@
 		CD8A266C2B851797006627BF /* f_sharpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A266B2B851797006627BF /* f_sharpTests.swift */; };
 		CD8A26762B851797006627BF /* f_sharpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A26752B851797006627BF /* f_sharpUITests.swift */; };
 		CD8A26782B851797006627BF /* f_sharpUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A26772B851797006627BF /* f_sharpUITestsLaunchTests.swift */; };
+		CDB867AE2B9F14B300524696 /* PatternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB867AD2B9F14B300524696 /* PatternView.swift */; };
 		CDE6361B2B85DDAA00D383B0 /* StaffLinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE6361A2B85DDAA00D383B0 /* StaffLinesView.swift */; };
 		CDE6361E2B86C79100D383B0 /* SwiftSVG in Frameworks */ = {isa = PBXBuildFile; productRef = CDE6361D2B86C79100D383B0 /* SwiftSVG */; };
 		CDE636202B879CFA00D383B0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE6361F2B879CFA00D383B0 /* HomeView.swift */; };
@@ -110,6 +111,7 @@
 		CD8A26712B851797006627BF /* f_sharpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = f_sharpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A26752B851797006627BF /* f_sharpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = f_sharpUITests.swift; sourceTree = "<group>"; };
 		CD8A26772B851797006627BF /* f_sharpUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = f_sharpUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CDB867AD2B9F14B300524696 /* PatternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternView.swift; sourceTree = "<group>"; };
 		CDE6361A2B85DDAA00D383B0 /* StaffLinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffLinesView.swift; sourceTree = "<group>"; };
 		CDE6361F2B879CFA00D383B0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CDE636212B879D3600D383B0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				CD1F9B952B992BD600186442 /* PlaylistPopup.swift */,
 				CD85F2632B9C531200D49CFA /* EditPlaylistView.swift */,
 				CD85F2682B9CA6DC00D49CFA /* PracticeViewManager.swift */,
+				CDB867AD2B9F14B300524696 /* PatternView.swift */,
 			);
 			path = f_sharp;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				CD1F9B7A2B93D11A00186442 /* EighthRest.swift in Sources */,
 				CD19575A2B8CE68400B1E7B5 /* PopupComponent.swift in Sources */,
 				CD1F9B882B97274500186442 /* Three.swift in Sources */,
+				CDB867AE2B9F14B300524696 /* PatternView.swift in Sources */,
 				CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */,
 				CD1957562B8CD49900B1E7B5 /* BottomMenuView.swift in Sources */,
 				CD1F9B7C2B961A0F00186442 /* BassClef.swift in Sources */,

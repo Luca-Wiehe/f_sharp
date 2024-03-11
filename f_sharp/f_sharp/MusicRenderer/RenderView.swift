@@ -1,9 +1,35 @@
 import SwiftUI
 
 struct RenderView: View {
-    let noteLine: Int
     let lineHeight: CGFloat
     let lineSpacing: CGFloat
+    
+    let pattern = """
+    <part id="P1">
+        <measure number="1">
+          <attributes>
+            <divisions>24</divisions>
+            <key>
+              <fifths>-3</fifths>
+              <mode>minor</mode>
+            </key>
+            <time>
+              <beats>4</beats>
+              <beat-type>4</beat-type>
+            </time>
+            <clef>
+              <sign>G</sign>
+              <line>2</line>
+            </clef>
+          </attributes>
+          <note>
+            <rest/>
+            <duration>72</duration>
+            <voice>1</voice>
+          </note>
+        </measure>
+    </part>
+    """
     
     var body: some View {
         ZStack (alignment: .leading) {
@@ -29,7 +55,7 @@ struct RenderView: View {
             Rectangle()
                 .frame(width: lineSpacing * 1.5, height: lineSpacing / 2)
                 .offset(x: 400, y: -lineSpacing * 3 / 4)
-            TimeSignature(beatsPerMeasure: 13, beatType: 18)
+            TimeSignature(beatsPerMeasure: 4, beatType: 4)
                 .frame(width: 4 * lineSpacing / 1.1905, height: 4 * lineSpacing - 4)
                 .offset(x: 450)
         }
@@ -38,6 +64,6 @@ struct RenderView: View {
 }
 
 #Preview {
-    RenderView(noteLine: 1, lineHeight: 1, lineSpacing: 20)
+    RenderView(lineHeight: 1, lineSpacing: 20)
 }
       
