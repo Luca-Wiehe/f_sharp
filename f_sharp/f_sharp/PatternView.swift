@@ -5,7 +5,7 @@ struct PatternView: View {
 
     var body: some View {
         VStack {
-            RenderView(lineHeight: 2, lineSpacing: 20)
+            RenderView(lineHeight: 2, lineSpacing: 20, pattern: "")
                 .padding(.horizontal, 16)
             Spacer()
             PatternActionsView()

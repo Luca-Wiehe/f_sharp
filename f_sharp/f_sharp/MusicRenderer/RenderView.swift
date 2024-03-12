@@ -4,32 +4,7 @@ struct RenderView: View {
     let lineHeight: CGFloat
     let lineSpacing: CGFloat
     
-    let pattern = """
-    <part id="P1">
-        <measure number="1">
-          <attributes>
-            <divisions>24</divisions>
-            <key>
-              <fifths>-3</fifths>
-              <mode>minor</mode>
-            </key>
-            <time>
-              <beats>4</beats>
-              <beat-type>4</beat-type>
-            </time>
-            <clef>
-              <sign>G</sign>
-              <line>2</line>
-            </clef>
-          </attributes>
-          <note>
-            <rest/>
-            <duration>72</duration>
-            <voice>1</voice>
-          </note>
-        </measure>
-    </part>
-    """
+    let pattern: String
     
     var body: some View {
         ZStack (alignment: .leading) {
@@ -64,6 +39,6 @@ struct RenderView: View {
 }
 
 #Preview {
-    RenderView(lineHeight: 1, lineSpacing: 20)
+    RenderView(lineHeight: 1, lineSpacing: 20, pattern: "")
 }
       
