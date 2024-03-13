@@ -4,7 +4,17 @@ struct RenderView: View {
     let lineHeight: CGFloat
     let lineSpacing: CGFloat
     
-    let pattern: String
+    let parser: MusicXMLParser
+    let musicSymbols: [MusicSymbol]
+    
+    init(lineHeight: CGFloat, lineSpacing: CGFloat, pattern: String) {
+        self.lineHeight = lineHeight
+        self.lineSpacing = lineSpacing
+        
+        // initialize parser and parse content of MusicXML
+        self.parser = MusicXMLParser()
+        self.musicSymbols = parser.parseMusicXML(pattern)
+    }
     
     var body: some View {
         ZStack (alignment: .leading) {
