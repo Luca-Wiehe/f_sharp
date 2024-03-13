@@ -49,6 +49,27 @@ struct RenderView: View {
 }
 
 #Preview {
-    RenderView(lineHeight: 1, lineSpacing: 20, pattern: "")
+    RenderView(lineHeight: 1, lineSpacing: 20, pattern: """
+        <part id="P1">
+            <measure number="1">
+              <attributes>
+                <divisions>24</divisions>
+                <time>
+                  <beats>3</beats>
+                  <beat-type>4</beat-type>
+                </time>
+                <clef>
+                  <sign>G</sign>
+                  <line>2</line>
+                </clef>
+              </attributes>
+              <note>
+                <rest/>
+                <duration>72</duration>
+                <voice>1</voice>
+              </note>
+            </measure>
+        </part>
+    """)
 }
       

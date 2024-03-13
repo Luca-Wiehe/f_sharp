@@ -1,26 +1,44 @@
 import Foundation
 
+/**
+ A parser for MusicXML files, converting XML string data into structured MusicSymbol objects.
+
+ This parser utilizes the Foundation XMLParser and implements a delegate pattern
+ to process MusicXML elements such as notes, rests, clefs, and time signatures,
+ and convert them into corresponding Swift objects for further use in the application.
+ */
 class MusicXMLParser {
     
+    /**
+     Parses a MusicXML string and returns an array of MusicSymbol objects.
+     
+     - Parameters:
+        - xmlString: The MusicXML data as a string.
+     
+     - Returns: An array of MusicSymbol objects representing the parsed XML data.
+     */
     func parseMusicXML(_ xmlString: String) -> [MusicSymbol] {
-        // Placeholder for parsed objects
         var parsedObjects: [MusicSymbol] = []
         
-        // Initialize XML parser with the provided string
         let parser = XMLParser(data: xmlString.data(using: .utf8)!)
         let delegate = MusicXMLParserDelegate()
         parser.delegate = delegate
         
-        // Start parsing
         parser.parse()
         
-        // Retrieve parsed data from delegate
         parsedObjects.append(contentsOf: delegate.parsedObjects)
+        print(parsedObjects)
         
         return parsedObjects
     }
 }
 
+/**
+ Delegate for the MusicXMLParser, implementing the XMLParserDelegate protocol.
+ 
+ This class is responsible for the detailed processing of the XML elements encountered
+ by the XMLParser, constructing MusicSymbol objects based on the element data.
+ */
 class MusicXMLParserDelegate: NSObject, XMLParserDelegate {
     var parsedObjects: [MusicSymbol] = []
     var currentElement = ""
@@ -30,23 +48,39 @@ class MusicXMLParserDelegate: NSObject, XMLParserDelegate {
     var currentTone: String?
     var isRest: Bool = false
     
-    // Temporary storage for Time and Clef information
     var currentBeats: Int?
     var currentBeatType: Int?
     var currentClefSign: String?
     var currentClefLine: Int?
     
+    /**
+     Called by the parser object when it encounters the start of an element.
+     
+     - Parameters:
+        - parser: The parser calling the method.
+        - elementName: The name of the encountered element.
+        - namespaceURI: The namespace URI of the element.
+        - qName: The qualified name of the element.
+        - attributeDict: A dictionary containing any attributes associated with the element.
+     */
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
         currentElement = elementName
         currentAttributes = attributeDict
+        
         if elementName == "note" {
-            // Prepare for a new note
             currentDuration = nil
             currentTone = nil
             isRest = false
         }
     }
     
+    /**
+     Called by the parser object when it encounters characters between the start and end tags of an element.
+     
+     - Parameters:
+        - parser: The parser calling the method.
+        - string: The character data encountered.
+     */
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         let trimmedString = string.trimmingCharacters(in: .whitespacesAndNewlines)
         if trimmedString.isEmpty { return }
@@ -67,6 +101,15 @@ class MusicXMLParserDelegate: NSObject, XMLParserDelegate {
         }
     }
     
+    /**
+     Called by the parser object when it encounters the end of an element.
+     
+     - Parameters:
+        - parser: The parser calling the method.
+        - elementName: The name of the element.
+        - namespaceURI: The namespace URI of the element.
+        - qName: The qualified name of the element.
+     */
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "time" {
             if let beats = currentBeats, let beatType = currentBeatType {
