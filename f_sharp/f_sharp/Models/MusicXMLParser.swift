@@ -44,14 +44,16 @@ class MusicXMLParserDelegate: NSObject, XMLParserDelegate {
     var currentElement = ""
     var currentAttributes: [String: String] = [:]
     
-    var currentDuration: Int?
+    var currentIntDuration: Int?
+    var currentNoteDuration: NoteDuration = .unknown
+    var isCurrentNoteDotted: Bool = false
     var currentTone: String?
     var isRest: Bool = false
     
     var currentBeats: Int?
     var currentBeatType: Int?
     var currentClefSign: String?
-    var currentClefLine: Int?
+    var currentClefType: ClefType = .unknown
     
     /**
      Called by the parser object when it encounters the start of an element.
@@ -68,7 +70,7 @@ class MusicXMLParserDelegate: NSObject, XMLParserDelegate {
         currentAttributes = attributeDict
         
         if elementName == "note" {
-            currentDuration = nil
+            currentIntDuration = nil
             currentTone = nil
             isRest = false
         }
@@ -92,10 +94,8 @@ class MusicXMLParserDelegate: NSObject, XMLParserDelegate {
             currentBeatType = Int(trimmedString)
         case "sign":
             currentClefSign = trimmedString
-        case "line":
-            currentClefLine = Int(trimmedString)
         case "duration":
-            currentDuration = Int(trimmedString)
+            currentIntDuration = Int(trimmedString)
         default:
             break
         }
@@ -119,25 +119,66 @@ class MusicXMLParserDelegate: NSObject, XMLParserDelegate {
                 currentBeatType = nil
             }
         } else if elementName == "clef" {
-            if let sign = currentClefSign, let line = currentClefLine {
-                let clefType = (sign == "G" && line == 2) ? 0 : 1 // Simplified mapping for example
-                let clef = Clef(clefType: clefType, keySignature: "N/A") // Key signature not handled here
+            if let sign = currentClefSign {
+                switch sign {
+                case "G":
+                    currentClefType = .treble
+                case "F":
+                    currentClefType = .bass
+                case "C":
+                    currentClefType = .violin
+                default:
+                    currentClefType = .unknown
+                }
+                
+                let clef = Clef(clefType: currentClefType, keySignature: "N/A") // Key signature not handled here
                 parsedObjects.append(clef)
                 currentClefSign = nil
-                currentClefLine = nil
             }
         } else if elementName == "rest" {
             isRest = true
         } else if elementName == "note" {
-            if let duration = currentDuration {
-                let note = isRest ? Rest(duration: duration) : MusicNote(duration: duration, tone: currentTone)
+            if currentNoteDuration != .unknown {
+                let note = isRest ? Rest(duration: currentNoteDuration) : MusicNote(duration: currentNoteDuration, tone: currentTone)
                 parsedObjects.append(note)
             }
         } else if elementName == "measure" {
-            let barline = Barline(barlineType: 0) // Simplified, assuming a single barline type
+            let barline = Barline(barlineType: .single) // Simplified, assuming a single barline type
             parsedObjects.append(barline)
         }
         
         currentElement = ""
+    }
+    
+    private func calcNoteDuration(duration: Int, divisions: Int) {
+        let beats = Double(duration) / Double(divisions)
+        switch beats {
+        case 0.25:
+            currentNoteDuration = .sixteenth
+            isCurrentNoteDotted = false
+        case 0.5:
+            currentNoteDuration = .eighth
+            isCurrentNoteDotted = false
+        case 0.75:
+            currentNoteDuration = .eighth
+            isCurrentNoteDotted = true
+        case 1:
+            currentNoteDuration = .quarter
+            isCurrentNoteDotted = false
+        case 1.5:
+            currentNoteDuration = .quarter
+            isCurrentNoteDotted = true
+        case 2:
+            currentNoteDuration = .half
+            isCurrentNoteDotted = false
+        case 3:
+            currentNoteDuration = .half
+            isCurrentNoteDotted = true
+        case 4:
+            currentNoteDuration = .full
+            isCurrentNoteDotted = false
+        default:
+            currentNoteDuration = .unknown
+        }
     }
 }

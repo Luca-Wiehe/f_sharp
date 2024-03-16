@@ -14,6 +14,10 @@ struct RenderView: View {
         // initialize parser and parse content of MusicXML
         self.parser = MusicXMLParser()
         self.musicSymbols = parser.parseMusicXML(pattern)
+        
+        for musicSymbol in self.musicSymbols {
+            print(musicSymbol.description)
+        }
     }
     
     var body: some View {

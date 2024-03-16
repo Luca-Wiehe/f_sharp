@@ -4,13 +4,16 @@ import Foundation
 A base class for different types of musical symbols.
 */
 class MusicSymbol {
+    var description: String {
+        return "MusicSymbol"
+    }
 }
 
 /**
 An enum representing the types of clefs.
 */
 enum ClefType {
-    case treble, bass
+    case treble, bass, violin, percussion, unknown
 }
 
 /**
@@ -24,7 +27,7 @@ enum BarlineType {
 An enum representing the durations of notes.
 */
 enum NoteDuration {
-    case sixteenth, eighth, quarter, half, full
+    case sixteenth, eighth, quarter, half, full, unknown
 }
 
 /**
@@ -46,6 +49,14 @@ class Clef: MusicSymbol {
         self.keySignature = keySignature
         super.init()
     }
+    
+    override var description: String {
+        return """
+        Clef
+         - clefType: \(clefType)
+         - keySignature: \(keySignature)
+        """
+    }
 }
 
 /**
@@ -66,6 +77,14 @@ class Time: MusicSymbol {
         self.beats = beats
         self.beatType = beatType
         super.init()
+    }
+    
+    override var description: String {
+        return """
+        Time
+         - beats: \(beats)
+         - beatType: \(beatType)
+        """
     }
 }
 
@@ -91,6 +110,15 @@ class MusicNote: MusicSymbol {
         self.isDotted = isDotted
         super.init()
     }
+    
+    override var description: String {
+        return """
+        MusicNote
+         - duration: \(duration)
+         - tone: \(tone ?? "nil")
+         - isDotted: \(isDotted)
+        """
+    }
 }
 
 /**
@@ -105,6 +133,13 @@ class Rest: MusicNote {
     */
     init(duration: NoteDuration) {
         super.init(duration: duration, tone: nil)
+    }
+    
+    override var description: String {
+        return """
+        Rest
+         - duration: \(duration)
+        """
     }
 }
 
@@ -122,5 +157,12 @@ class Barline: MusicSymbol {
     init(barlineType: BarlineType) {
         self.barlineType = barlineType
         super.init()
+    }
+    
+    override var description: String {
+        return """
+        Barline
+         - barlineType: \(barlineType)
+        """
     }
 }
