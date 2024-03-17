@@ -50,6 +50,8 @@ class MusicXMLParserDelegate: NSObject, XMLParserDelegate {
     var currentTone: String?
     var isRest: Bool = false
     
+    var currentDivisions: Int?
+    
     var currentBeats: Int?
     var currentBeatType: Int?
     var currentClefSign: String?
@@ -70,9 +72,12 @@ class MusicXMLParserDelegate: NSObject, XMLParserDelegate {
         currentAttributes = attributeDict
         
         if elementName == "note" {
-            currentIntDuration = nil
+            currentIntDuration = 0
             currentTone = nil
             isRest = false
+        } else if elementName == "attributes" {
+            // Reset the currentDivisions value for each new <attributes> element
+            currentDivisions = nil
         }
     }
     
@@ -89,13 +94,19 @@ class MusicXMLParserDelegate: NSObject, XMLParserDelegate {
         
         switch currentElement {
         case "beats":
-            currentBeats = Int(trimmedString)
+            print("Obtaining beats: \(trimmedString)")
+            self.currentBeats = Int(trimmedString)
         case "beat-type":
             currentBeatType = Int(trimmedString)
         case "sign":
             currentClefSign = trimmedString
         case "duration":
             currentIntDuration = Int(trimmedString)
+        case "divisions":
+            // Here we capture the divisions value when we are within the <divisions> element
+            if currentDivisions == nil { // Only set if not already set, or reset based on your needs
+                currentDivisions = Int(trimmedString)
+            }
         default:
             break
         }
@@ -115,8 +126,6 @@ class MusicXMLParserDelegate: NSObject, XMLParserDelegate {
             if let beats = currentBeats, let beatType = currentBeatType {
                 let time = Time(beats: beats, beatType: beatType)
                 parsedObjects.append(time)
-                currentBeats = nil
-                currentBeatType = nil
             }
         } else if elementName == "clef" {
             if let sign = currentClefSign {
@@ -137,9 +146,11 @@ class MusicXMLParserDelegate: NSObject, XMLParserDelegate {
             }
         } else if elementName == "rest" {
             isRest = true
-        } else if elementName == "note" {
+        } else if elementName == "note" && currentIntDuration != nil {
+            print("currentIntDuration: \(String(describing: currentIntDuration)), currentDivisions: \(String(describing: currentDivisions))")
+            calcNoteDuration(duration: currentIntDuration ?? 0, divisions: currentDivisions ?? 1)
             if currentNoteDuration != .unknown {
-                let note = isRest ? Rest(duration: currentNoteDuration) : MusicNote(duration: currentNoteDuration, tone: currentTone)
+                let note = isRest ? Rest(duration: currentNoteDuration) : MusicNote(duration: currentNoteDuration, tone: currentTone, isDotted: isCurrentNoteDotted)
                 parsedObjects.append(note)
             }
         } else if elementName == "measure" {
@@ -152,6 +163,14 @@ class MusicXMLParserDelegate: NSObject, XMLParserDelegate {
     
     private func calcNoteDuration(duration: Int, divisions: Int) {
         let beats = Double(duration) / Double(divisions)
+        
+        print("Int(beats): \(Int(beats)), currentBeats: \(String(describing: currentBeats))")
+        
+        if Int(beats) == currentBeats {
+            currentNoteDuration = .full
+            return
+        }
+        
         switch beats {
         case 0.25:
             currentNoteDuration = .sixteenth

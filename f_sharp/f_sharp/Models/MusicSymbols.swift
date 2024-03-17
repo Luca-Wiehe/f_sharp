@@ -132,7 +132,7 @@ class Rest: MusicNote {
     - Parameter duration: The duration of the rest.
     */
     init(duration: NoteDuration) {
-        super.init(duration: duration, tone: nil)
+        super.init(duration: duration, tone: nil, isDotted: false)
     }
     
     override var description: String {
