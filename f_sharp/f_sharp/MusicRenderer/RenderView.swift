@@ -7,6 +7,8 @@ struct RenderView: View {
     let parser: MusicXMLParser
     let musicSymbols: [MusicSymbol]
     
+    @State private var currentXOffset: CGFloat = 0
+    
     init(lineHeight: CGFloat, lineSpacing: CGFloat, pattern: String) {
         self.lineHeight = lineHeight
         self.lineSpacing = lineSpacing
@@ -23,32 +25,36 @@ struct RenderView: View {
     var body: some View {
         ZStack (alignment: .leading) {
             StaffLines(lineSpacing: lineSpacing, lineHeight: lineHeight)
-            EighthRest()
-                .frame(width: 1.25 * lineSpacing, height: 2.5 * lineSpacing)
-                .offset(x: 200)
-            QuarterRest()
-                .frame(width: 1.25 * lineSpacing, height: 2.5 * lineSpacing)
-                .offset(x: 150)
-            Note(noteSize: CGSize(width: 26, height: 26), isCutout: false, stemType: 2, flagType: 2)
-                .frame(width: 50, height: 100)
-                .offset(x: 80, y: 67)
-            TrebleClef()
-                .frame(width: 2.5 * lineSpacing, height: 6 * lineSpacing)
-                .offset(x: 10)
-            BassClef()
-                .frame(width: 3 * (lineHeight + lineSpacing) / 1.1905, height: 3 * (lineHeight + lineSpacing))
-                .offset(x: 250, y: -8)
-            Rectangle()
-                .frame(width: lineSpacing * 1.5, height: lineSpacing / 2)
-                .offset(x: 350, y: -lineSpacing / 4)
-            Rectangle()
-                .frame(width: lineSpacing * 1.5, height: lineSpacing / 2)
-                .offset(x: 400, y: -lineSpacing * 3 / 4)
-            TimeSignature(beatsPerMeasure: 4, beatType: 4)
-                .frame(width: 4 * lineSpacing / 1.1905, height: 4 * lineSpacing - 4)
-                .offset(x: 450)
+            
+            ForEach(0..<musicSymbols.count, id: \.self) {
+                index in
+                symbolView(for: musicSymbols[index])
+                    .offset(x: self.offset(for: index), y: 0)
+            }
         }
-        .frame(height: 200)
+    }
+    
+    @ViewBuilder
+    private func symbolView(for symbol: MusicSymbol) -> some View {
+        if let time = symbol as? Time {
+            TimeSignature(beatsPerMeasure: time.beats, beatType: time.beatType)
+                .frame(width: 3 * lineSpacing, height: 4 * lineSpacing)
+        } else if let clef = symbol as? Clef, clef.clefType == .treble {
+            TrebleClef()
+                .frame(width: 2.5 * lineSpacing, height: 6 * (lineSpacing + lineHeight))
+        } else if let clef = symbol as? Clef, clef.clefType == .bass {
+            BassClef()
+                .frame(width: 2.5 * lineSpacing, height: 3
+                       * (lineSpacing + lineHeight))
+        } else if symbol is Rest {
+            Rectangle().frame(width: lineSpacing * 1.5, height: lineSpacing / 2)
+        } else if symbol is MusicNote {
+            // Note()
+        }
+    }
+    
+    private func offset(for index: Int) -> CGFloat {
+        CGFloat(index) * lineSpacing * 3.5
     }
 }
 
@@ -63,7 +69,7 @@ struct RenderView: View {
                   <beat-type>4</beat-type>
                 </time>
                 <clef>
-                  <sign>G</sign>
+                  <sign>F</sign>
                   <line>2</line>
                 </clef>
               </attributes>
