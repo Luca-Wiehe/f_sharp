@@ -2,29 +2,31 @@ import SwiftUI
 
 struct PatternView: View {
     var patternText: String
+    var onEdit: () -> Void
 
     var body: some View {
         VStack {
             RenderView(lineHeight: 2, lineSpacing: 20, pattern: "")
                 .padding(.horizontal, 16)
             Spacer()
-            PatternActionsView()
+            PatternActionsView(onEdit: onEdit)
         }
     }
 }
 
 struct PatternActionsView: View {
+    var onEdit: () -> Void
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 35, style: .continuous)
                 .foregroundColor(.blue)
                 .frame(width: 300, height: 64)
 
-            // Button group without forcing full width
             HStack(spacing: 28) {
                 // Play button
                 Button(action: {
-                    // Handle play action
+                    // play MIDI of pattern
                 }) {
                     VStack {
                         Image(systemName: "play.circle.fill")
@@ -38,7 +40,7 @@ struct PatternActionsView: View {
 
                 // Edit button (larger and emphasized)
                 Button(action: {
-                    // Handle edit action
+                    onEdit()
                 }) {
                     Image(systemName: "pencil")
                         .font(.system(size: 48))
@@ -50,7 +52,7 @@ struct PatternActionsView: View {
 
                 // Statistics button
                 Button(action: {
-                    // Handle statistics action
+                    // show PatternStatisticsView
                 }) {
                     VStack {
                         Image(systemName: "chart.bar.fill")
@@ -63,10 +65,6 @@ struct PatternActionsView: View {
                 }
             }
         }
+        .padding(.bottom, 32)
     }
-}
-
-
-#Preview {
-    PatternView(patternText: "Pattern 1")
 }

@@ -6,6 +6,7 @@ struct EditPlaylistView: View {
     @State private var selectedPattern: String? = "Pattern 1"
     @State private var dummyPatterns = ["Pattern 1", "Pattern 2", "Pattern 3", "Pattern 4", "Pattern 5", "Pattern 6", "Pattern 7", "Pattern 8", "Pattern 9", "Pattern 10", "Pattern 11", "Pattern 12", "Pattern 13", "Pattern 14", "Pattern 15", "Pattern 16"]
     @State private var patternsExpanded: Bool = true
+    @State private var isPatternInEdit: Bool = false
 
     private let sidebarGradient = LinearGradient(
         gradient: Gradient(colors: [Color.blue, Color.blue.opacity(0.7)]),
@@ -35,7 +36,6 @@ struct EditPlaylistView: View {
                             .padding(.vertical, 32)
                             .padding(.horizontal, 16)
                         ScrollView {
-                            // PlaylistSettings button
                             SidebarButton(isExpandable: false, icon: "gear", text: "Playlist Settings", isExpanded: .constant(false))
 
                             SidebarButton(isExpandable: true, icon: "music.note.list", text: "Patterns", isExpanded: $patternsExpanded)
@@ -72,8 +72,20 @@ struct EditPlaylistView: View {
                     .clipShape(RoundedSidebar(radius: 20, corners: [.topRight, .bottomRight]))
 
                     if let selectedPattern = selectedPattern {
-                        PatternView(patternText: selectedPattern)
+                        if self.isPatternInEdit {
+                            EditPatternView(onSave: {
+                                self.isPatternInEdit = false
+                            }, onCancel: {
+                                self.isPatternInEdit = false
+                            })
                             .frame(width: UIScreen.main.bounds.width * 0.7)
+                        }else {
+                            PatternView(patternText: selectedPattern, onEdit: {
+                                self.isPatternInEdit = true
+                            })
+                            .frame(width: UIScreen.main.bounds.width * 0.7)
+                        }
+                        
                     } else {
                         Text("Select a pattern")
                             .frame(width: UIScreen.main.bounds.width * 0.7)

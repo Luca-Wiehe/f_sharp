@@ -42,6 +42,7 @@ struct ContentView: View {
                 popupManager.content
             }
         )
+        .background(Color(UIColor.secondarySystemBackground))
     }
 }
 

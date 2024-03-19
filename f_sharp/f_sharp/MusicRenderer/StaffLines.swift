@@ -10,13 +10,10 @@ struct StaffLines: View {
     var body: some View {
         GeometryReader { geometry in
             Path { path in
-                // Calculate the total height needed for all lines and spacings
                 let totalHeight = CGFloat(numberOfLines - 1) * lineSpacing
                 
-                // Starting y-position for the first line
                 let startY = (geometry.size.height - totalHeight) / 2
                 
-                // Draw each of the staff lines
                 for lineIndex in 0..<numberOfLines {
                     let y = startY + CGFloat(lineIndex) * lineSpacing
                     path.move(to: CGPoint(x: 0, y: y))
@@ -32,6 +29,6 @@ struct StaffLines: View {
 struct StaffLines_Preview: PreviewProvider {
     static var previews: some View {
         StaffLines(lineSpacing: 20, lineHeight: 1)
-            .frame(height: 100) // Set an appropriate height for the staff lines to display correctly
+            .frame(height: 100)
     }
 }
