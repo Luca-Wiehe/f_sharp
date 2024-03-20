@@ -57,22 +57,38 @@ struct EditPatternView: View {
             Text("Add Note or Rest?")
                 .font(.system(size: 36, weight: .heavy))
                 .foregroundColor(.black)
-            
-            HStack(spacing: 20) {
+                .padding(.top, 32)
+                .padding(.bottom, 16)
+
+            HStack(spacing: 32) {
                 GradientButton(text: "Rest", gradientColors: [Color.pink, Color.purple], onAction: {
                     stage = .duration
                 }){
-                    StaffLines(lineSpacing: 15, lineHeight: 2)
+                    ZStack {
+                        StaffLines(lineSpacing: 15, lineHeight: 2)
+                            .frame(width: 50)
+                        QuarterRest()
+                            .frame(width: 20, height: 45)
+                    }
                 }
                 GradientButton(text: "Note", gradientColors: [Color.blue, Color.teal], onAction: {
                     stage = .duration
                 }){
-                    
+                    ZStack {
+                        StaffLines(lineSpacing: 15, lineHeight: 2)
+                            .frame(width: 50)
+                        Note(noteSize: CGSize(width: 15, height: 15), stemType: 1, flagType: 0)
+                            .frame(width: 15, height: 45)
+                            .offset(y: 30)
+                    }
                 }
             }
+            .padding(.horizontal, 16)
+            .padding(.bottom, 16)
         }
         .padding()
     }
+
     
     var durationView: some View {
         VStack {
@@ -134,7 +150,7 @@ struct EditPatternView: View {
                         
                         Text(text)
                             .font(.system(size: 28, weight: .heavy))
-                            .frame(width: UIScreen.main.bounds.width / 4)
+                            .frame(width: UIScreen.main.bounds.width / 4 - 32)
                             .foregroundColor(.clear)
                             .background(LinearGradient(gradient: Gradient(colors: gradientColors), startPoint: .leading, endPoint: .trailing))
                             .mask(Text(text)
@@ -143,7 +159,6 @@ struct EditPatternView: View {
                         
                         Spacer()
                     }
-                    .background(Color.yellow)
                 }
                 .padding()
                 .overlay(RoundedRectangle(cornerRadius: 20)

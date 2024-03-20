@@ -1,22 +1,25 @@
 import SwiftUI
 
 struct NoteHead: Shape {
+    /**
+     Expecting 1:1 aspect ratio
+     */
     var isCutout: Bool
     
     func path(in rect: CGRect) -> Path {
         var path = Path()
         
         // Calculate proportions based on the rect's size.
-        let marginHorizontal = rect.width * 0.125 // Adjusted for proportionality
-        let marginVertical = rect.height * 0.05 // Adjusted for proportionality
-        let innerInsetHorizontal = rect.width * 0.2 // Adjusted for proportionality
-        let innerInsetVertical = rect.height * 0.1 // Adjusted for proportionality
+        let marginHorizontal = rect.width * 0.125
+        let marginVertical = rect.height * 0.05
+        let innerInsetHorizontal = rect.width * 0.2
+        let innerInsetVertical = rect.height * 0.1
         
-        // Define the rectangles for the outer and inner ellipses based on the calculated proportions.
-        let outerEllipseRect = CGRect(x: rect.minX + marginHorizontal,
-                                      y: rect.minY + marginVertical,
+        // Defining bounding boxes for rectangles
+        let outerEllipseRect = CGRect(x: rect.minX,
+                                      y: rect.minY,
                                       width: rect.width - 2 * marginHorizontal,
-                                      height: rect.height - 2 * marginVertical)
+                                      height: rect.height + 4 * marginVertical)
         let innerEllipseRect = outerEllipseRect.insetBy(dx: innerInsetHorizontal, dy: innerInsetVertical)
         
         // Add the outer ellipse to the path.
@@ -47,4 +50,9 @@ struct NoteHead: Shape {
         
         return path
     }
+}
+
+#Preview {
+    NoteHead(isCutout: true)
+        .frame(width: 300, height: 300)
 }

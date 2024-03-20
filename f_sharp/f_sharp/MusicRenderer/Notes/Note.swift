@@ -11,8 +11,8 @@ struct Note: Shape {
         
         // NoteHead
         let noteHead = NoteHead(isCutout: isCutout)
-        let noteHeadRect = CGRect(x: rect.minX,
-                                  y: rect.midY - noteSize.height / 2,
+        let noteHeadRect = CGRect(x: rect.midX,
+                                  y: rect.maxY,
                                   width: noteSize.width,
                                   height: noteSize.height)
         path.addPath(noteHead.path(in: noteHeadRect))
@@ -23,7 +23,7 @@ struct Note: Shape {
         var stemRect = CGRect.zero
         
         if stemType == 1 {
-            let stemXPosition: CGFloat = rect.minX + noteSize.width - 2 * stemWidth
+            let stemXPosition: CGFloat = rect.minX + noteSize.width - stemWidth
             
             stemRect = CGRect(x: stemXPosition,
                               y: rect.midY - 1.4 * noteSize.height - stemHeight,
@@ -116,4 +116,10 @@ struct Note: Shape {
         
         return path
     }
+}
+
+#Preview {
+    Note(noteSize: CGSize(20, 20), stemType: 1, flagType: 2)
+        .frame(width: 20, height: 60)
+        .background(.red)
 }
