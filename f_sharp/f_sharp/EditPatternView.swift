@@ -6,11 +6,18 @@ enum PatternEditingStage {
     case pitch
 }
 
+enum DurationType {
+    case note
+    case rest
+}
+
 struct EditPatternView: View {
     var onSave: () -> Void
     var onCancel: () -> Void
     
     @State private var stage = PatternEditingStage.restOrNote
+    @State private var selectedDurationType: DurationType = .note
+    @State private var selectedDuration: NoteDuration = .unknown
     
     var body: some View {
         GeometryReader { geometry in
@@ -54,15 +61,12 @@ struct EditPatternView: View {
     
     var restOrNoteView: some View {
         VStack(spacing: 20) {
-            Text("Add Note or Rest?")
-                .font(.system(size: 36, weight: .heavy))
-                .foregroundColor(.black)
-                .padding(.top, 32)
-                .padding(.bottom, 16)
+            DialogHeader(title: "Add Note or Rest?")
 
             HStack(spacing: 32) {
                 GradientButton(text: "Rest", gradientColors: [Color.pink, Color.purple], onAction: {
                     stage = .duration
+                    selectedDurationType = .rest
                 }){
                     ZStack {
                         StaffLines(lineSpacing: 15, lineHeight: 2)
@@ -73,6 +77,7 @@ struct EditPatternView: View {
                 }
                 GradientButton(text: "Note", gradientColors: [Color.blue, Color.teal], onAction: {
                     stage = .duration
+                    selectedDurationType = .note
                 }){
                     ZStack {
                         StaffLines(lineSpacing: 15, lineHeight: 2)
@@ -91,39 +96,100 @@ struct EditPatternView: View {
 
     
     var durationView: some View {
-        VStack {
-            ForEach(0..<2, id: \.self) { _ in
-                HStack {
-                    ForEach(0..<4, id: \.self) { _ in
-                        Button("Option") { stage = .pitch }
+        ZStack(alignment: .topLeading) {
+            VStack(spacing: 20) {
+                DialogHeader(title: "Choose Duration")
+                
+                HStack(spacing: 10) {
+                    ForEach(NoteDuration.displayableCases, id: \.self) { duration in
+                        Button(action: {
+                            self.stage = .pitch
+                        }) {
+                            Text(duration)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(10)
+                        }
                     }
                 }
+                .padding(.horizontal, 16)
+                
+                if selectedDurationType == .note {
+                    HStack {
+                        Button(action: {
+                            self.stage = .pitch
+                        }) {
+                            Text("Dotted")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(10)
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                }
+                
+                Spacer()
             }
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
             backButton(previousStage: .restOrNote)
+                .padding(.top, 16)
+                .padding(.leading, 16)
         }
     }
+
+
+
     
     var pitchView: some View {
-        VStack {
-            ForEach(0..<2, id: \.self) { _ in
-                HStack {
-                    ForEach(0..<7, id: \.self) { _ in
-                        Button("Final Option") { }
+        ZStack(alignment: .topLeading) {
+            VStack {
+                DialogHeader(title: "Choose Pitch")
+                
+                ForEach(0..<2, id: \.self) { _ in
+                    HStack {
+                        ForEach(0..<7, id: \.self) { _ in
+                            Button("Final Option") { }
+                        }
                     }
                 }
+                
+                Spacer()
             }
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
             backButton(previousStage: .duration)
+                .padding(.top, 16)
+                .padding(.leading, 16)
         }
+        
     }
     
     func backButton(previousStage: PatternEditingStage) -> some View {
         Button(action: {
             self.stage = previousStage
         }) {
-            Text("Back")
-                .foregroundColor(.blue)
-                .padding()
-                .border(Color.blue, width: 2)
+            HStack {
+                Image(systemName: "chevron.left")
+                Text("Back")
+            }
+            .foregroundColor(.blue)
+        }
+    }
+    
+    struct DialogHeader: View {
+        var title: String
+        
+        var body: some View {
+            Text(title)
+                .font(.system(size: 36, weight: .heavy))
+                .foregroundColor(.black)
+                .padding(.top, 32)
+                .padding(.bottom, 16)
         }
     }
     

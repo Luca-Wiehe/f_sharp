@@ -26,8 +26,25 @@ enum BarlineType {
 /**
 An enum representing the durations of notes.
 */
-enum NoteDuration {
+enum NoteDuration: CaseIterable {
     case sixteenth, eighth, quarter, half, full, unknown
+    
+    var displayName: String {
+            switch self {
+            case .sixteenth: return "Sixteenth"
+            case .eighth: return "Eighth"
+            case .quarter: return "Quarter"
+            case .half: return "Half"
+            case .full: return "Full"
+            case .unknown: return ""
+            }
+        }
+
+    static var displayableCases: [String] {
+        return NoteDuration.allCases
+            .filter { $0 != .unknown }
+            .map { $0.displayName }
+    }
 }
 
 /**
