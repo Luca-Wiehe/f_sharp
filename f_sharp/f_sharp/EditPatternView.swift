@@ -18,6 +18,7 @@ struct EditPatternView: View {
     @State private var stage = PatternEditingStage.restOrNote
     @State private var selectedDurationType: DurationType = .note
     @State private var selectedDuration: NoteDuration = .unknown
+    @State private var isDottedSelection: Bool = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -82,7 +83,7 @@ struct EditPatternView: View {
                     ZStack {
                         StaffLines(lineSpacing: 15, lineHeight: 2)
                             .frame(width: 50)
-                        Note(noteSize: CGSize(width: 15, height: 15), stemType: 1, flagType: 0)
+                        Note(noteSize: CGSize(width: 15, height: 15), noteDuration: .quarter, isDotted: false)
                             .frame(width: 15, height: 45)
                             .offset(y: 30)
                     }
@@ -105,11 +106,14 @@ struct EditPatternView: View {
                         Button(action: {
                             self.stage = .pitch
                         }) {
-                            Text(duration)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
+                            VStack{
+                                StaffLines(lineSpacing: 15, lineHeight: 2)
+                                    .frame(width: 50, height: 70)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .cornerRadius(20)
+                            .gradientContentAndStroke(gradientColors: [Color.blue, Color.teal])
                         }
                     }
                 }
@@ -118,13 +122,15 @@ struct EditPatternView: View {
                 if selectedDurationType == .note {
                     HStack {
                         Button(action: {
-                            self.stage = .pitch
+                            self.isDottedSelection = !isDottedSelection
                         }) {
                             Text("Dotted")
-                                .frame(maxWidth: .infinity)
+                                .frame(width: 80)
+                                .fontWeight(.heavy)
                                 .padding()
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
+                                .padding(.vertical, 16)
+                                .cornerRadius(20)
+                                .gradientBackgroundOrContent(gradientColors: [Color.pink, Color.purple], isSelected: isDottedSelection)
                         }
                     }
                     .padding(.horizontal, 16)
@@ -140,9 +146,6 @@ struct EditPatternView: View {
                 .padding(.leading, 16)
         }
     }
-
-
-
     
     var pitchView: some View {
         ZStack(alignment: .topLeading) {
@@ -232,5 +235,52 @@ struct EditPatternView: View {
                 .background(RoundedRectangle(cornerRadius: 20).fill(Color.clear))
             }
         }
+    }
+}
+
+struct GradientBackgroundButtonModifier: ViewModifier {
+    var isSelected: Bool
+    var gradientColors: [Color]
+    
+    func body(content: Content) -> some View {
+        if isSelected {
+            content
+                .foregroundColor(.white)
+                .background(LinearGradient(gradient: Gradient(colors: gradientColors), startPoint: .leading, endPoint: .trailing))
+                .cornerRadius(20)
+        } else {
+            content
+                .gradientContentAndStroke(gradientColors: gradientColors)
+        }
+    }
+}
+
+extension View {
+    func gradientBackgroundOrContent(gradientColors: [Color], isSelected: Bool) -> some View {
+        self.modifier(GradientBackgroundButtonModifier(isSelected: isSelected, gradientColors: gradientColors))
+    }
+}
+
+struct GradientContentButtonModifier: ViewModifier {
+    var gradientColors: [Color]
+    var lineWidth: CGFloat = 3
+    
+    func body(content: Content) -> some View {
+        content
+            .overlay(
+                LinearGradient(gradient: Gradient(colors: gradientColors), startPoint: .leading, endPoint: .trailing)
+                    .mask(content)
+            )
+            .overlay(RoundedRectangle(cornerRadius: 20)
+                        .stroke(LinearGradient(gradient: Gradient(colors: gradientColors),
+                                               startPoint: .leading,
+                                               endPoint: .trailing),
+                                lineWidth: lineWidth))
+    }
+}
+
+extension View {
+    func gradientContentAndStroke(gradientColors: [Color], lineWidth: CGFloat = 3) -> some View {
+        self.modifier(GradientContentButtonModifier(gradientColors: gradientColors, lineWidth: lineWidth))
     }
 }
