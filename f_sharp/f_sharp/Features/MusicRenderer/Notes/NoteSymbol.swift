@@ -28,7 +28,7 @@ struct NoteConfig {
  
  The above example creates a quarter note with a specified size and frames it within a view with a red background.
  */
-struct Note: Shape {
+struct NoteSymbol: Shape {
     enum StemType {
         case noStem
         case stemUp
@@ -70,7 +70,7 @@ struct Note: Shape {
         
         self.isDotted = isDotted
         
-        let attributes = Note.attributes(for: noteDuration)
+        let attributes = NoteSymbol.attributes(for: noteDuration)
         self.isCutout = attributes.isCutout
         self.stemType = attributes.stemType
         self.flagType = attributes.flagType
@@ -215,6 +215,6 @@ struct Note: Shape {
 }
 
 #Preview {
-    Note(noteSize: CGSize(20, 20), noteDuration: .sixteenth, isDotted: true)
+    NoteSymbol(noteSize: CGSize(20, 20), noteDuration: .sixteenth, isDotted: true)
         .frame(width: 20, height: 20)
 }

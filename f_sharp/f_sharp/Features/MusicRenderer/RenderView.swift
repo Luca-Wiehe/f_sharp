@@ -24,7 +24,7 @@ struct RenderView: View {
     
     var body: some View {
         ZStack (alignment: .leading) {
-            StaffLines(lineSpacing: lineSpacing, lineHeight: lineHeight)
+            StaffLinesView(lineSpacing: lineSpacing, lineHeight: lineHeight)
             
             ForEach(0..<musicSymbols.count, id: \.self) {
                 index in

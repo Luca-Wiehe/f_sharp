@@ -40,10 +40,9 @@ enum NoteDuration: CaseIterable {
             }
         }
 
-    static var displayableCases: [String] {
+    static var displayableCases: [NoteDuration] {
         return NoteDuration.allCases
             .filter { $0 != .unknown }
-            .map { $0.displayName }
     }
 }
 
