@@ -55,17 +55,17 @@ struct DurationView: View {
                     Button(action: {
                         self.isDottedSelection = !isDottedSelection
                     }) {
-                        Text("Dotted")
-                            .frame(width: 80)
-                            .fontWeight(.heavy)
-                            .padding()
-                            .padding(.vertical, 16)
-                            .cornerRadius(20)
-                            .gradientModifier(
-                                gradientColors: [Color.pink, Color.purple],
-                                options: isDottedSelection ? [.background] : [.stroke, .contentAndText],
-                                strokeWidth: 2
-                            )
+                        VStack {
+                            Circle()
+                                .frame(width: 4, height: 4)
+                        }
+                        .frame(width: 80, height: 80)
+                        .gradientModifier(
+                            gradientColors: [Color.pink, Color.purple],
+                            options: isDottedSelection ? [.background] : [.stroke, .contentAndText],
+                            strokeWidth: 2
+                        )
+                        .padding(.vertical, 16)
                     }
                 }
                 .padding(.horizontal, 16)
