@@ -4,67 +4,83 @@ struct PitchView: View {
     @Binding var stage: PatternEditingStage
     
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            VStack {
-                DialogHeader(title: "Choose Pitch").padding(.bottom)
-                
-                GeometryReader { geometry in
-                    let totalHorizontalSpacing: CGFloat = 4 * 8 // For 5 columns, adjusting spacing
-                    let availableWidth: CGFloat = geometry.size.width - totalHorizontalSpacing
-                    let buttonWidth: CGFloat = availableWidth / 5 // Width for each button
+            ZStack(alignment: .topLeading) {
+                VStack {
+                    DialogHeader(title: "Choose Pitch").padding(.bottom)
                     
-                    let totalVerticalSpace: CGFloat = geometry.size.height - (geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom)
-                    let buttonHeight: CGFloat = totalVerticalSpace / 4 // Height for each button
-                    
-                    VStack(spacing: 8) {
-                        ForEach(0..<2, id: \.self) { _ in // Only need to iterate for the number of vertical button groups, not rows
-                            HStack(spacing: 8) {
-                                ForEach(0..<4, id: \.self) { _ in // Create buttons for the first four columns
-                                    Button(action: {
-                                        self.stage = .restOrNote
-                                    }) {
-                                        ZStack {
-                                            StaffLinesView(lineSpacing: 8, lineHeight: 1)
-                                            NoteSymbol(noteSize: CGSize(width: 8, height: 8), noteDuration: .quarter, isDotted: false)
-                                                .frame(width: 8, height: 8)
+                    GeometryReader { geometry in
+                        HStack(spacing: 8) {
+                            VStack(spacing: 8) {
+                                ForEach(0..<2) { i in
+                                    HStack(spacing: 8) {
+                                        ForEach(0..<4) { j in
+                                            Group1Button(subtitle: "\(i * 4 + j)")
                                         }
                                     }
-                                    .frame(width: buttonWidth, height: buttonHeight * 2 + 8) // Button spans two rows
-                                    .cornerRadius(20)
-                                    .gradientModifier(gradientColors: [Color.blue, Color.teal], options: [.stroke, .contentAndText], strokeWidth: 2)
                                 }
-                                
-                                // Spacer() might not be necessary unless specific alignment is required
-                                
-                                // Creating the button for the last column
-                                // This loop is incorrect based on your error message; however, you'd handle the last column separately.
                             }
-                        }
-                        // Handling the last column with buttons fitting into one row each
-                        VStack(spacing: 8) {
-                            ForEach(0..<4, id: \.self) { _ in
-                                Button(action: {}) {
-                                    Image(systemName: "music.note")
+                            .frame(maxWidth: .infinity)
+                            
+                            Spacer()
+                            
+                            VStack(spacing: 8) {
+                                ForEach(0..<4) { _ in
+                                    Group2Button()
+                                        .frame(height: (geometry.size.height - (3 * 8)) / 4) // Adjust the height dynamically
                                 }
-                                .frame(width: buttonWidth, height: buttonHeight)
-                                .cornerRadius(10)
-                                .gradientModifier(gradientColors: [Color.pink, Color.purple], options: [.stroke, .contentAndText], strokeWidth: 1)
                             }
+                            .frame(width: geometry.size.width * 0.2)
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                    .frame(width: geometry.size.width, height: totalVerticalSpace)
                 }
+                .padding()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
+                BackButton(action: {
+                    stage = .duration
+                })
+                .padding(.top, 16)
+                .padding(.leading, 16)
+            }
+    }
+}
+
+
+struct Group1Button: View {
+    let subtitle: String
+    
+    var body: some View {
+        
+        Button(action: {
+            
+        }) {
+            VStack {
+                Spacer()
+                ZStack {
+                    StaffLinesView(lineSpacing: 8, lineHeight: 1)
+                    NoteSymbol(noteSize: CGSize(width: 8, height: 8), noteDuration: .quarter, isDotted: false)
+                        .frame(width: 8, height: 8)
+                }
+                Text(subtitle)
+                    .bold()
                 Spacer()
             }
-            .padding()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
-            BackButton(action: {
-                stage = .duration
-            })
-            .padding(.top, 16)
-            .padding(.leading, 16)
         }
+        .cornerRadius(20)
+        .gradientModifier(gradientColors: [Color.blue, Color.teal], options: [.stroke, .contentAndText], strokeWidth: 2)
+    }
+}
+
+struct Group2Button: View {
+    var body: some View {
+        Button(action: {
+            
+        }) {
+            Image(systemName: "music.note")
+        }
+        .cornerRadius(20)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .gradientModifier(gradientColors: [Color.pink, Color.purple], options: [.stroke, .contentAndText], strokeWidth: 2)
     }
 }
