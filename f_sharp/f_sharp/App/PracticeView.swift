@@ -1,25 +1,5 @@
 import SwiftUI
 
-// Playlist struct definition
-struct Playlist: Identifiable {
-    var id = UUID()
-    var title: String
-    var genre: String
-    var patternReferences: [String]
-    var maxLength: Int
-    var previewImageName: String {
-            "genre-\(genre.lowercased())"
-        }
-
-    // Initialize the Playlist struct with all properties
-    init(title: String, genre: String, patternReferences: [String], maxLength: Int) {
-        self.title = title
-        self.genre = genre
-        self.patternReferences = patternReferences
-        self.maxLength = maxLength
-    }
-}
-
 struct HeaderView: View {
     var body: some View {
         HStack {
@@ -43,7 +23,7 @@ struct SubtitleView: View {
 }
 
 struct PlaylistCardView: View {
-    var playlist: Playlist
+    var playlist: PatternPlaylist
     
     var body: some View {
         VStack(spacing: 0) {
@@ -168,9 +148,9 @@ struct PlaylistManagerCardView: View {
 
 struct PracticeHomeView: View {
     let playlists = [
-        Playlist(title: "Playlist 1", genre: "Classic", patternReferences: ["Pattern 1A", "Pattern 1B"], maxLength: 5),
-        Playlist(title: "Playlist 2", genre: "Jazz", patternReferences: ["Pattern 2A", "Pattern 2B"], maxLength: 10),
-        Playlist(title: "Playlist 3", genre: "Rock", patternReferences: ["Pattern 3A", "Pattern 3B"], maxLength: 15)
+        PatternPlaylist(title: "Playlist 1", genre: "Classic", patternReferences: ["Pattern 1A", "Pattern 1B"], maxLength: 5),
+        PatternPlaylist(title: "Playlist 2", genre: "Jazz", patternReferences: ["Pattern 2A", "Pattern 2B"], maxLength: 10),
+        PatternPlaylist(title: "Playlist 3", genre: "Rock", patternReferences: ["Pattern 3A", "Pattern 3B"], maxLength: 15)
     ]
     
     var body: some View {

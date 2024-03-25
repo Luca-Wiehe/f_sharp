@@ -43,6 +43,12 @@
 		CD669D2B2B8F25550074CF1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD669D2A2B8F25550074CF1C /* ContentView.swift */; };
 		CD80DFCA2BAF58AE00C6F1B2 /* GradientModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80DFC92BAF58AE00C6F1B2 /* GradientModifier.swift */; };
 		CD80DFCE2BAF601C00C6F1B2 /* SubtitledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80DFCD2BAF601C00C6F1B2 /* SubtitledButton.swift */; };
+		CD80DFD02BB1836C00C6F1B2 /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80DFCF2BB1836C00C6F1B2 /* PlaylistViewModel.swift */; };
+		CD80DFD62BB187DE00C6F1B2 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80DFD52BB187DE00C6F1B2 /* Pattern.swift */; };
+		CD80DFD92BB189F300C6F1B2 /* RoundedSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80DFD82BB189F300C6F1B2 /* RoundedSidebar.swift */; };
+		CD80DFDB2BB18A6100C6F1B2 /* PrimarySidebarElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80DFDA2BB18A6100C6F1B2 /* PrimarySidebarElement.swift */; };
+		CD80DFDD2BB18AD500C6F1B2 /* SecondarySidebarElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80DFDC2BB18AD500C6F1B2 /* SecondarySidebarElement.swift */; };
+		CD80DFDF2BB1915600C6F1B2 /* PatternPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80DFDE2BB1915600C6F1B2 /* PatternPlaylist.swift */; };
 		CD85F2642B9C531200D49CFA /* EditPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD85F2632B9C531200D49CFA /* EditPlaylistView.swift */; };
 		CD85F2692B9CA6DC00D49CFA /* PracticeViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD85F2682B9CA6DC00D49CFA /* PracticeViewManager.swift */; };
 		CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A265A2B851795006627BF /* f_sharpApp.swift */; };
@@ -115,6 +121,12 @@
 		CD669D2A2B8F25550074CF1C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CD80DFC92BAF58AE00C6F1B2 /* GradientModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientModifier.swift; sourceTree = "<group>"; };
 		CD80DFCD2BAF601C00C6F1B2 /* SubtitledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitledButton.swift; sourceTree = "<group>"; };
+		CD80DFCF2BB1836C00C6F1B2 /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
+		CD80DFD52BB187DE00C6F1B2 /* Pattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
+		CD80DFD82BB189F300C6F1B2 /* RoundedSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSidebar.swift; sourceTree = "<group>"; };
+		CD80DFDA2BB18A6100C6F1B2 /* PrimarySidebarElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySidebarElement.swift; sourceTree = "<group>"; };
+		CD80DFDC2BB18AD500C6F1B2 /* SecondarySidebarElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondarySidebarElement.swift; sourceTree = "<group>"; };
+		CD80DFDE2BB1915600C6F1B2 /* PatternPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternPlaylist.swift; sourceTree = "<group>"; };
 		CD85F2632B9C531200D49CFA /* EditPlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlaylistView.swift; sourceTree = "<group>"; };
 		CD85F2682B9CA6DC00D49CFA /* PracticeViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewManager.swift; sourceTree = "<group>"; };
 		CD8A26572B851795006627BF /* f_sharp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = f_sharp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,6 +252,25 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		CD80DFD42BB187C400C6F1B2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CD80DFD52BB187DE00C6F1B2 /* Pattern.swift */,
+				CD80DFDE2BB1915600C6F1B2 /* PatternPlaylist.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CD80DFD72BB1894400C6F1B2 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				CD80DFD82BB189F300C6F1B2 /* RoundedSidebar.swift */,
+				CD80DFDA2BB18A6100C6F1B2 /* PrimarySidebarElement.swift */,
+				CD80DFDC2BB18AD500C6F1B2 /* SecondarySidebarElement.swift */,
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
 		CD8A264E2B851794006627BF = {
 			isa = PBXGroup;
 			children = (
@@ -268,7 +299,7 @@
 				CDCDC98E2BAE41AC00BA5F64 /* CommonUI */,
 				CDCDC9892BAE415B00BA5F64 /* Core */,
 				CDCDC9842BAE406500BA5F64 /* Features */,
-				CDCDC9942BAED70100BA5F64 /* Globals */,
+				CDCDC9942BAED70100BA5F64 /* Shared */,
 				CD8A26602B851797006627BF /* Preview Content */,
 			);
 			path = f_sharp;
@@ -337,6 +368,7 @@
 			children = (
 				CD1F9B952B992BD600186442 /* PlaylistPopup.swift */,
 				CD85F2632B9C531200D49CFA /* EditPlaylistView.swift */,
+				CD80DFCF2BB1836C00C6F1B2 /* PlaylistViewModel.swift */,
 			);
 			path = PatternPlaylists;
 			sourceTree = "<group>";
@@ -400,6 +432,7 @@
 		CDCDC98F2BAE41BE00BA5F64 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CD80DFD72BB1894400C6F1B2 /* Sidebar */,
 				CD80DFCC2BAF5FFD00C6F1B2 /* Buttons */,
 				CD80DFCB2BAF58B900C6F1B2 /* Modifiers */,
 				CD1957592B8CE68400B1E7B5 /* PopupComponent.swift */,
@@ -446,13 +479,14 @@
 			path = GoalTracker;
 			sourceTree = "<group>";
 		};
-		CDCDC9942BAED70100BA5F64 /* Globals */ = {
+		CDCDC9942BAED70100BA5F64 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CD80DFD42BB187C400C6F1B2 /* Model */,
 				CD19575B2B8CEB3C00B1E7B5 /* PopupManager.swift */,
 				CD85F2682B9CA6DC00D49CFA /* PracticeViewManager.swift */,
 			);
-			path = Globals;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		CDCDC9952BAED7A500BA5F64 /* Calendar */ = {
@@ -607,21 +641,26 @@
 				CDE636222B879D3600D383B0 /* SettingsView.swift in Sources */,
 				CD669D2B2B8F25550074CF1C /* ContentView.swift in Sources */,
 				CD1F9B842B97272400186442 /* One.swift in Sources */,
+				CD80DFDB2BB18A6100C6F1B2 /* PrimarySidebarElement.swift in Sources */,
 				CD85F2692B9CA6DC00D49CFA /* PracticeViewManager.swift in Sources */,
 				CDE636242B88094F00D383B0 /* CalendarView.swift in Sources */,
 				CD006CE42B9285B80086AADE /* RenderView.swift in Sources */,
 				CD1F9B862B97273C00186442 /* Two.swift in Sources */,
+				CD80DFD92BB189F300C6F1B2 /* RoundedSidebar.swift in Sources */,
 				CD1F9B6B2B92C1E000186442 /* NoteSymbol.swift in Sources */,
 				CDE636202B879CFA00D383B0 /* HomeView.swift in Sources */,
 				CD1F9B7A2B93D11A00186442 /* EighthRest.swift in Sources */,
 				CD19575A2B8CE68400B1E7B5 /* PopupComponent.swift in Sources */,
+				CD80DFDD2BB18AD500C6F1B2 /* SecondarySidebarElement.swift in Sources */,
 				CD1F9B882B97274500186442 /* Three.swift in Sources */,
 				CDCDC9812BA8B87F00BA5F64 /* EditPatternView.swift in Sources */,
 				CD6065102BAF4F6500426F3D /* DurationView.swift in Sources */,
 				CDB867AE2B9F14B300524696 /* PatternView.swift in Sources */,
 				CD6065142BAF50B400426F3D /* BackButton.swift in Sources */,
+				CD80DFD62BB187DE00C6F1B2 /* Pattern.swift in Sources */,
 				CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */,
 				CDB867B22B9F7FE000524696 /* MusicSymbols.swift in Sources */,
+				CD80DFD02BB1836C00C6F1B2 /* PlaylistViewModel.swift in Sources */,
 				CD80DFCA2BAF58AE00C6F1B2 /* GradientModifier.swift in Sources */,
 				CD1F9B7C2B961A0F00186442 /* BassClef.swift in Sources */,
 				CD1F9B782B93874900186442 /* TrebleClef.swift in Sources */,
@@ -640,6 +679,7 @@
 				CD1F9B962B992BD600186442 /* PlaylistPopup.swift in Sources */,
 				CD80DFCE2BAF601C00C6F1B2 /* SubtitledButton.swift in Sources */,
 				CD1F9B742B9374BC00186442 /* QuarterRest.swift in Sources */,
+				CD80DFDF2BB1915600C6F1B2 /* PatternPlaylist.swift in Sources */,
 				CD6065122BAF500D00426F3D /* PitchView.swift in Sources */,
 				CD345B5A2B89DB5600482A37 /* GoalView.swift in Sources */,
 				CD1957522B8B3E5200B1E7B5 /* PracticeView.swift in Sources */,
