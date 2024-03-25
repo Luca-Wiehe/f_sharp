@@ -181,7 +181,9 @@ struct PracticeView: View {
         case .home:
             PracticeHomeView()
         case .editPlaylist:
-            EditPlaylistView()
+            if let currentPlaylist = practiceViewManager.currentPlaylistSelection {
+                EditPlaylistView(currentPlaylist: Binding.constant(currentPlaylist))
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct PatternView: View {
-    var patternText: String
     var onEdit: () -> Void
 
     var body: some View {

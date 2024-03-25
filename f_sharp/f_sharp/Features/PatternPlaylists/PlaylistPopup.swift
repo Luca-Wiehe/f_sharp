@@ -28,16 +28,18 @@ struct PlaylistPopup: View {
             .padding()
 
             Button(action: {
+                let newPlaylist = PatternPlaylist(
+                    title: playlistName,
+                    genre: selectedGenre,
+                    patternReferences: [],
+                    maxLength: 10
+                )
+                
+                playlistStorage.addPlaylist(newPlaylist)
+                practiceViewManager.currentPlaylistSelection = newPlaylist
+                
                 popupManager.isShown = false
                 practiceViewManager.currentView = .editPlaylist
-                playlistStorage.addPlaylist(
-                    PatternPlaylist(
-                        title: playlistName,
-                        genre: selectedGenre,
-                        patternReferences: [],
-                        maxLength: 10
-                    )
-                )
             }) {
                 Text("Add Playlist")
                     .font(.system(size: 18, weight: .bold))

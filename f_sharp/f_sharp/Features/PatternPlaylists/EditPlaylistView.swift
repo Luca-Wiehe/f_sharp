@@ -3,8 +3,10 @@ import SwiftUI
 struct EditPlaylistView: View {
     @EnvironmentObject var practiceViewManager: PracticeViewManager
     
-    @State private var selectedPattern: String? = "Pattern 1"
-    @State private var patterns = ["Pattern 1", "Pattern 2", "Pattern 3", "Pattern 4", "Pattern 5", "Pattern 6", "Pattern 7", "Pattern 8", "Pattern 9", "Pattern 10", "Pattern 11", "Pattern 12", "Pattern 13", "Pattern 14", "Pattern 15", "Pattern 16"]
+    @Binding var currentPlaylist: PatternPlaylist
+    
+    @State private var patterns: [Pattern] = PatternStorage.shared.loadPatterns()
+    @State private var selectedPattern: Pattern?
     @State private var patternsExpanded: Bool = true
     @State private var isPatternInEdit: Bool = false
 
@@ -35,24 +37,32 @@ struct EditPlaylistView: View {
                             if patternsExpanded {
                                 LazyVStack {
                                     SidebarActionElement(
-                                    actionTitle: "New Pattern",
-                                    action: {
-                                        print("New Pattern button tapped")
-                                    })
+                                        actionTitle: "New Pattern",
+                                        action: {
+                                            let newPattern = Pattern(musicXML: "")
+                                            PatternStorage.shared.addPattern(newPattern)
+                                            
+                                            let playlistViewModel = PatternPlaylistViewModel(playlist: currentPlaylist)
+                                            playlistViewModel.addPattern(newPattern)
+                                            selectedPattern = newPattern
+                                            
+                                            patterns = PatternStorage.shared.loadPatterns()
+                                        }
+                                    )
+
                                     
-                                    ForEach(patterns, id: \.self) { pattern in
+                                    ForEach(Array(patterns.enumerated()), id: \.element.id) { index, pattern in
                                         Button(action: {
                                             self.selectedPattern = pattern
                                         }) {
                                             HStack {
-                                                Text(pattern)
+                                                Text("Pattern \(index + 1)")
                                                     .foregroundColor(.white)
                                                     .padding(.horizontal, 48)
                                                     .padding(.vertical, 16)
-
                                             }
                                             .frame(maxWidth: .infinity, alignment: .leading)
-                                            .background(self.selectedPattern == pattern ? Color.white.opacity(0.3) : Color.clear)
+                                            .background(self.selectedPattern?.id == pattern.id ? Color.white.opacity(0.3) : Color.clear)
                                             .cornerRadius(10)
                                             .padding(.horizontal)
                                         }
@@ -65,7 +75,7 @@ struct EditPlaylistView: View {
                     .background(sidebarGradient)
                     .clipShape(RoundedSidebar(radius: 20, corners: [.topRight, .bottomRight]))
 
-                    if let selectedPattern = selectedPattern {
+                    if selectedPattern != nil {
                         if self.isPatternInEdit {
                             EditPatternView(onSave: {
                                 self.isPatternInEdit = false
@@ -74,14 +84,14 @@ struct EditPlaylistView: View {
                             })
                             .frame(width: UIScreen.main.bounds.width * 0.7)
                         }else {
-                            PatternView(patternText: selectedPattern, onEdit: {
+                            PatternView(onEdit: {
                                 self.isPatternInEdit = true
                             })
                             .frame(width: UIScreen.main.bounds.width * 0.7)
                         }
                         
                     } else {
-                        Text("Select a pattern")
+                        Text("Create a new pattern")
                             .frame(width: UIScreen.main.bounds.width * 0.7)
                     }
                 }
@@ -94,7 +104,9 @@ struct EditPlaylistView: View {
 // Preview
 struct EditPlaylistView_Previews: PreviewProvider {
     static var previews: some View {
-        EditPlaylistView()
+        let currentPlaylist: PatternPlaylist = PatternPlaylist(title: "Hello World", genre: "Rock", patternReferences: [], maxLength: 10)
+        
+        EditPlaylistView(currentPlaylist: .constant(currentPlaylist))
             .environmentObject(PracticeViewManager())
             .environmentObject(PlaylistStorage.shared)
     }

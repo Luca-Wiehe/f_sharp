@@ -27,7 +27,7 @@ class PatternStorage: ObservableObject {
         }
     }
     
-    private func loadPatterns() -> [Pattern] {
+    func loadPatterns() -> [Pattern] {
         do {
             let data = try Data(contentsOf: fileURL)
             let patterns = try JSONDecoder().decode([Pattern].self, from: data)
