@@ -52,5 +52,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .environmentObject(PopupManager())
             .environmentObject(PracticeViewManager())
+            .environmentObject(PlaylistStorage.shared)
+            .environmentObject(PatternStorage.shared)
     }
 }

@@ -3,6 +3,7 @@ import SwiftUI
 struct PlaylistPopup: View {
     @EnvironmentObject var popupManager: PopupManager
     @EnvironmentObject var practiceViewManager: PracticeViewManager
+    @EnvironmentObject var playlistStorage: PlaylistStorage
     
     @State private var playlistName: String = ""
     @State private var selectedGenre: String = "Jazz"
@@ -29,6 +30,14 @@ struct PlaylistPopup: View {
             Button(action: {
                 popupManager.isShown = false
                 practiceViewManager.currentView = .editPlaylist
+                playlistStorage.addPlaylist(
+                    PatternPlaylist(
+                        title: playlistName,
+                        genre: selectedGenre,
+                        patternReferences: [],
+                        maxLength: 10
+                    )
+                )
             }) {
                 Text("Add Playlist")
                     .font(.system(size: 18, weight: .bold))
@@ -44,7 +53,6 @@ struct PlaylistPopup: View {
     }
 
     func customPicker(options: [String], selection: Binding<String>) -> some View {
-        // Configuring for four items per row
         let columns = Array(repeating: GridItem(.flexible(), spacing: 8), count: 4)
 
         return ScrollView(.vertical) {
@@ -52,7 +60,7 @@ struct PlaylistPopup: View {
                 ForEach(options, id: \.self) { option in
                     Text(option)
                         .padding()
-                        .frame(maxWidth: .infinity, minHeight: 44) // Ensures each option spans the full width equally
+                        .frame(maxWidth: .infinity, minHeight: 44)
                         .background(self.backgroundForOption(option, selectedOption: selection.wrappedValue))
                         .cornerRadius(10)
                         .foregroundColor(option == selection.wrappedValue ? .white : .primary)

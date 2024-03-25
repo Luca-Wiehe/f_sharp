@@ -4,7 +4,7 @@ struct EditPlaylistView: View {
     @EnvironmentObject var practiceViewManager: PracticeViewManager
     
     @State private var selectedPattern: String? = "Pattern 1"
-    @State private var dummyPatterns = ["Pattern 1", "Pattern 2", "Pattern 3", "Pattern 4", "Pattern 5", "Pattern 6", "Pattern 7", "Pattern 8", "Pattern 9", "Pattern 10", "Pattern 11", "Pattern 12", "Pattern 13", "Pattern 14", "Pattern 15", "Pattern 16"]
+    @State private var patterns = ["Pattern 1", "Pattern 2", "Pattern 3", "Pattern 4", "Pattern 5", "Pattern 6", "Pattern 7", "Pattern 8", "Pattern 9", "Pattern 10", "Pattern 11", "Pattern 12", "Pattern 13", "Pattern 14", "Pattern 15", "Pattern 16"]
     @State private var patternsExpanded: Bool = true
     @State private var isPatternInEdit: Bool = false
 
@@ -40,7 +40,7 @@ struct EditPlaylistView: View {
                                         print("New Pattern button tapped")
                                     })
                                     
-                                    ForEach(dummyPatterns, id: \.self) { pattern in
+                                    ForEach(patterns, id: \.self) { pattern in
                                         Button(action: {
                                             self.selectedPattern = pattern
                                         }) {
@@ -96,5 +96,6 @@ struct EditPlaylistView_Previews: PreviewProvider {
     static var previews: some View {
         EditPlaylistView()
             .environmentObject(PracticeViewManager())
+            .environmentObject(PlaylistStorage.shared)
     }
 }

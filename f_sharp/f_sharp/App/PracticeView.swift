@@ -147,11 +147,7 @@ struct PlaylistManagerCardView: View {
 }
 
 struct PracticeHomeView: View {
-    let playlists = [
-        PatternPlaylist(title: "Playlist 1", genre: "Classic", patternReferences: ["Pattern 1A", "Pattern 1B"], maxLength: 5),
-        PatternPlaylist(title: "Playlist 2", genre: "Jazz", patternReferences: ["Pattern 2A", "Pattern 2B"], maxLength: 10),
-        PatternPlaylist(title: "Playlist 3", genre: "Rock", patternReferences: ["Pattern 3A", "Pattern 3B"], maxLength: 15)
-    ]
+    @State private var playlists: [PatternPlaylist] = PlaylistStorage.shared.loadPlaylists()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {

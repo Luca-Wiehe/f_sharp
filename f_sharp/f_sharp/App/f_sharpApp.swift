@@ -17,6 +17,7 @@ struct f_sharpApp: App {
             ContentView()
                 .environmentObject(popupManager)
                 .environmentObject(practiceViewManager)
+                .environmentObject(PlaylistStorage.shared)
         }
     }
 }
