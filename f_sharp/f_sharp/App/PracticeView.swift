@@ -62,6 +62,7 @@ struct PlaylistCardView: View {
 
 struct PlaylistManagerCardView: View {
     @EnvironmentObject var popupManager: PopupManager
+    @EnvironmentObject var practiceViewManager: PracticeViewManager
     
     private let cardWidth: CGFloat = 200
     private let cardHeight: CGFloat = 230
@@ -131,14 +132,12 @@ struct PlaylistManagerCardView: View {
     }
     
     private func showAddNewPopup() {
-        @EnvironmentObject var practiceViewManager: PracticeViewManager
-        
         popupManager.isShown = true
         popupManager.content = AnyView(PlaylistPopup())
     }
 
     private func viewAllPlaylists() {
-        // Action to view all playlists
+        practiceViewManager.currentView = .playlistOverview
     }
 
     private func managePlaylists() {
@@ -184,6 +183,8 @@ struct PracticeView: View {
             if let currentPlaylist = practiceViewManager.currentPlaylistSelection {
                 EditPlaylistView(currentPlaylist: Binding.constant(currentPlaylist))
             }
+        case .playlistOverview:
+            PlaylistOverviewView()
         }
     }
 }

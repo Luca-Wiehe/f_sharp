@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RestOrNoteView: View {
     @Binding var stage: PatternEditingStage
-    @Binding var selectedDurationType: DurationType
+    @Binding var selectedNoteType: NoteType
 
     var body: some View {
         VStack(spacing: 20) {
@@ -10,9 +10,8 @@ struct RestOrNoteView: View {
 
             HStack(spacing: 32) {
                 SubtitledButton(text: "Rest", gradientColors: [Color.pink, Color.purple], onAction: {
-                    print("Rest clicked")
                     stage = .duration
-                    selectedDurationType = .rest
+                    selectedNoteType = .rest
                 }){
                     ZStack {
                         StaffLinesView(lineSpacing: 15, lineHeight: 2)
@@ -23,15 +22,14 @@ struct RestOrNoteView: View {
                 }
                 
                 SubtitledButton(text: "Note", gradientColors: [Color.blue, Color.teal], onAction: {
-                    print("Note clicked")
                     stage = .duration
-                    selectedDurationType = .note
+                    selectedNoteType = .note
                 }){
                     ZStack {
                         StaffLinesView(lineSpacing: 15, lineHeight: 2)
                             .frame(width: 50)
                         
-                        NoteSymbol(noteSize: CGSize(width: 15, height: 15), noteDuration: .quarter, isDotted: false)
+                        NoteSymbol(noteSize: CGSize(width: 15, height: 15), noteDuration: .quarter, isDotted: false, stemType: .stemUp)
                             .frame(width: 15, height: 45)
                             .offset(y: 30)
                     }

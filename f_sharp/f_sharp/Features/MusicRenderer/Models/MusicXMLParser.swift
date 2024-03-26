@@ -27,7 +27,7 @@ class MusicXMLParser {
         parser.parse()
         
         parsedObjects.append(contentsOf: delegate.parsedObjects)
-        print(parsedObjects)
+        print("parsedObjects: \(parsedObjects)")
         
         return parsedObjects
     }

@@ -48,10 +48,10 @@ struct NoteSymbol: Shape {
     var noteSize: CGSize
     var noteDuration: NoteDuration = .unknown
     var isDotted: Bool
+    var stemType: StemType
     
     // inferred attributes
     var isCutout: Bool
-    var stemType: StemType
     var flagType: FlagType
     
     /**
@@ -63,16 +63,16 @@ struct NoteSymbol: Shape {
        - noteSize: The size of the note head.
        - noteDuration: The duration of the note, which influences its appearance.
     */
-    init(noteSize: CGSize, noteDuration: NoteDuration, isDotted: Bool) {
+    init(noteSize: CGSize, noteDuration: NoteDuration, isDotted: Bool, stemType: StemType) {
         self.noteConfig = NoteConfig()
         self.noteSize = noteSize
         self.noteDuration = noteDuration
+        self.stemType = stemType
         
         self.isDotted = isDotted
         
-        let attributes = NoteSymbol.attributes(for: noteDuration)
+        let attributes = NoteSymbol.attributes(for: noteDuration, stemType: stemType)
         self.isCutout = attributes.isCutout
-        self.stemType = attributes.stemType
         self.flagType = attributes.flagType
     }
     /**
@@ -196,25 +196,25 @@ struct NoteSymbol: Shape {
      - Parameter duration: The musical duration of the note.
      - Returns: A tuple containing the isCutout flag, stem type, and flag type.
     */
-    static func attributes(for duration: NoteDuration) -> (isCutout: Bool, stemType: StemType, flagType: FlagType) {
+    static func attributes(for duration: NoteDuration, stemType: StemType) -> (isCutout: Bool, stemType: StemType, flagType: FlagType) {
         switch duration {
         case .full:
             return (true, .noStem, .noFlag)
         case .half:
-            return (true, .stemUp, .noFlag)
+            return (true, stemType, .noFlag)
         case .quarter:
-            return (false, .stemUp, .noFlag)
+            return (false, stemType, .noFlag)
         case .eighth:
-            return (false, .stemUp, .singleFlag)
+            return (false, stemType, .singleFlag)
         case .sixteenth:
-            return (false, .stemUp, .doubleFlag)
+            return (false, stemType, .doubleFlag)
         case .unknown:
-            return (false, .noStem, .noFlag)
+            return (false, stemType, .noFlag)
         }
     }
 }
 
 #Preview {
-    NoteSymbol(noteSize: CGSize(20, 20), noteDuration: .sixteenth, isDotted: true)
+    NoteSymbol(noteSize: CGSize(20, 20), noteDuration: .sixteenth, isDotted: true, stemType: .stemDown)
         .frame(width: 20, height: 20)
 }

@@ -34,6 +34,8 @@
 		CD1F9B922B97277E00186442 /* Eight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B912B97277E00186442 /* Eight.swift */; };
 		CD1F9B942B97278800186442 /* Nine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B932B97278800186442 /* Nine.swift */; };
 		CD1F9B962B992BD600186442 /* PlaylistPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F9B952B992BD600186442 /* PlaylistPopup.swift */; };
+		CD2D1A832BB3241F00B3D33E /* PlaylistOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2D1A822BB3241F00B3D33E /* PlaylistOverviewView.swift */; };
+		CD2D1A852BB3390300B3D33E /* ManagePlaylistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2D1A842BB3390300B3D33E /* ManagePlaylistsView.swift */; };
 		CD345B5A2B89DB5600482A37 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD345B592B89DB5500482A37 /* GoalView.swift */; };
 		CD60650E2BAF4ECD00426F3D /* RestOrNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD60650D2BAF4ECD00426F3D /* RestOrNoteView.swift */; };
 		CD6065102BAF4F6500426F3D /* DurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD60650F2BAF4F6500426F3D /* DurationView.swift */; };
@@ -51,6 +53,7 @@
 		CD80DFDF2BB1915600C6F1B2 /* PatternPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80DFDE2BB1915600C6F1B2 /* PatternPlaylist.swift */; };
 		CD80DFE12BB1973900C6F1B2 /* PlaylistStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80DFE02BB1973900C6F1B2 /* PlaylistStorage.swift */; };
 		CD80DFE32BB19EC300C6F1B2 /* PatternStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80DFE22BB19EC300C6F1B2 /* PatternStorage.swift */; };
+		CD80DFE52BB1EFF300C6F1B2 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80DFE42BB1EFF300C6F1B2 /* GradientButton.swift */; };
 		CD85F2642B9C531200D49CFA /* EditPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD85F2632B9C531200D49CFA /* EditPlaylistView.swift */; };
 		CD85F2692B9CA6DC00D49CFA /* PracticeViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD85F2682B9CA6DC00D49CFA /* PracticeViewManager.swift */; };
 		CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A265A2B851795006627BF /* f_sharpApp.swift */; };
@@ -59,7 +62,7 @@
 		CD8A266C2B851797006627BF /* f_sharpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A266B2B851797006627BF /* f_sharpTests.swift */; };
 		CD8A26762B851797006627BF /* f_sharpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A26752B851797006627BF /* f_sharpUITests.swift */; };
 		CD8A26782B851797006627BF /* f_sharpUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A26772B851797006627BF /* f_sharpUITestsLaunchTests.swift */; };
-		CDB867AE2B9F14B300524696 /* PatternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB867AD2B9F14B300524696 /* PatternView.swift */; };
+		CDB867AE2B9F14B300524696 /* PatternPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB867AD2B9F14B300524696 /* PatternPreviewView.swift */; };
 		CDB867B22B9F7FE000524696 /* MusicSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB867B12B9F7FE000524696 /* MusicSymbols.swift */; };
 		CDB867B42B9F812500524696 /* MusicXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB867B32B9F812500524696 /* MusicXMLParser.swift */; };
 		CDCDC9812BA8B87F00BA5F64 /* EditPatternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCDC9802BA8B87E00BA5F64 /* EditPatternView.swift */; };
@@ -114,6 +117,8 @@
 		CD1F9B912B97277E00186442 /* Eight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eight.swift; sourceTree = "<group>"; };
 		CD1F9B932B97278800186442 /* Nine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nine.swift; sourceTree = "<group>"; };
 		CD1F9B952B992BD600186442 /* PlaylistPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistPopup.swift; sourceTree = "<group>"; };
+		CD2D1A822BB3241F00B3D33E /* PlaylistOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistOverviewView.swift; sourceTree = "<group>"; };
+		CD2D1A842BB3390300B3D33E /* ManagePlaylistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePlaylistsView.swift; sourceTree = "<group>"; };
 		CD345B592B89DB5500482A37 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		CD60650D2BAF4ECD00426F3D /* RestOrNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestOrNoteView.swift; sourceTree = "<group>"; };
 		CD60650F2BAF4F6500426F3D /* DurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationView.swift; sourceTree = "<group>"; };
@@ -131,6 +136,7 @@
 		CD80DFDE2BB1915600C6F1B2 /* PatternPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternPlaylist.swift; sourceTree = "<group>"; };
 		CD80DFE02BB1973900C6F1B2 /* PlaylistStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistStorage.swift; sourceTree = "<group>"; };
 		CD80DFE22BB19EC300C6F1B2 /* PatternStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternStorage.swift; sourceTree = "<group>"; };
+		CD80DFE42BB1EFF300C6F1B2 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		CD85F2632B9C531200D49CFA /* EditPlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlaylistView.swift; sourceTree = "<group>"; };
 		CD85F2682B9CA6DC00D49CFA /* PracticeViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewManager.swift; sourceTree = "<group>"; };
 		CD8A26572B851795006627BF /* f_sharp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = f_sharp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,7 +148,7 @@
 		CD8A26712B851797006627BF /* f_sharpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = f_sharpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A26752B851797006627BF /* f_sharpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = f_sharpUITests.swift; sourceTree = "<group>"; };
 		CD8A26772B851797006627BF /* f_sharpUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = f_sharpUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		CDB867AD2B9F14B300524696 /* PatternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternView.swift; sourceTree = "<group>"; };
+		CDB867AD2B9F14B300524696 /* PatternPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternPreviewView.swift; sourceTree = "<group>"; };
 		CDB867B12B9F7FE000524696 /* MusicSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSymbols.swift; sourceTree = "<group>"; };
 		CDB867B32B9F812500524696 /* MusicXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicXMLParser.swift; sourceTree = "<group>"; };
 		CDCDC9802BA8B87E00BA5F64 /* EditPatternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPatternView.swift; sourceTree = "<group>"; };
@@ -252,6 +258,7 @@
 			children = (
 				CD6065132BAF50B400426F3D /* BackButton.swift */,
 				CD80DFCD2BAF601C00C6F1B2 /* SubtitledButton.swift */,
+				CD80DFE42BB1EFF300C6F1B2 /* GradientButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -370,9 +377,12 @@
 		CDCDC9862BAE407B00BA5F64 /* PatternPlaylists */ = {
 			isa = PBXGroup;
 			children = (
+				CDB867AD2B9F14B300524696 /* PatternPreviewView.swift */,
 				CD1F9B952B992BD600186442 /* PlaylistPopup.swift */,
 				CD85F2632B9C531200D49CFA /* EditPlaylistView.swift */,
 				CD80DFCF2BB1836C00C6F1B2 /* PatternPlaylistViewModel.swift */,
+				CD2D1A822BB3241F00B3D33E /* PlaylistOverviewView.swift */,
+				CD2D1A842BB3390300B3D33E /* ManagePlaylistsView.swift */,
 			);
 			path = PatternPlaylists;
 			sourceTree = "<group>";
@@ -380,7 +390,6 @@
 		CDCDC9872BAE409300BA5F64 /* PatternViewer */ = {
 			isa = PBXGroup;
 			children = (
-				CDB867AD2B9F14B300524696 /* PatternView.swift */,
 			);
 			path = PatternViewer;
 			sourceTree = "<group>";
@@ -642,12 +651,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD1957542B8B3ED500B1E7B5 /* SearchView.swift in Sources */,
+				CD2D1A832BB3241F00B3D33E /* PlaylistOverviewView.swift in Sources */,
 				CDB867B42B9F812500524696 /* MusicXMLParser.swift in Sources */,
 				CD1F9B8A2B97274D00186442 /* Four.swift in Sources */,
 				CDE636222B879D3600D383B0 /* SettingsView.swift in Sources */,
 				CD669D2B2B8F25550074CF1C /* ContentView.swift in Sources */,
 				CD1F9B842B97272400186442 /* One.swift in Sources */,
 				CD80DFDB2BB18A6100C6F1B2 /* PrimarySidebarElement.swift in Sources */,
+				CD2D1A852BB3390300B3D33E /* ManagePlaylistsView.swift in Sources */,
 				CD85F2692B9CA6DC00D49CFA /* PracticeViewManager.swift in Sources */,
 				CDE636242B88094F00D383B0 /* CalendarView.swift in Sources */,
 				CD006CE42B9285B80086AADE /* RenderView.swift in Sources */,
@@ -656,6 +667,7 @@
 				CD80DFD92BB189F300C6F1B2 /* RoundedSidebar.swift in Sources */,
 				CD1F9B6B2B92C1E000186442 /* NoteSymbol.swift in Sources */,
 				CDE636202B879CFA00D383B0 /* HomeView.swift in Sources */,
+				CD80DFE52BB1EFF300C6F1B2 /* GradientButton.swift in Sources */,
 				CD1F9B7A2B93D11A00186442 /* EighthRest.swift in Sources */,
 				CD19575A2B8CE68400B1E7B5 /* PopupComponent.swift in Sources */,
 				CD80DFDD2BB18AD500C6F1B2 /* SecondarySidebarElement.swift in Sources */,
@@ -663,7 +675,7 @@
 				CD80DFE12BB1973900C6F1B2 /* PlaylistStorage.swift in Sources */,
 				CDCDC9812BA8B87F00BA5F64 /* EditPatternView.swift in Sources */,
 				CD6065102BAF4F6500426F3D /* DurationView.swift in Sources */,
-				CDB867AE2B9F14B300524696 /* PatternView.swift in Sources */,
+				CDB867AE2B9F14B300524696 /* PatternPreviewView.swift in Sources */,
 				CD6065142BAF50B400426F3D /* BackButton.swift in Sources */,
 				CD80DFD62BB187DE00C6F1B2 /* Pattern.swift in Sources */,
 				CD8A265B2B851795006627BF /* f_sharpApp.swift in Sources */,

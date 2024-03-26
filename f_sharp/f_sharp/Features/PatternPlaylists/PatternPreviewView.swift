@@ -1,14 +1,41 @@
 import SwiftUI
 
-struct PatternView: View {
+struct PatternPreviewView: View {
     var onEdit: () -> Void
 
     var body: some View {
-        VStack {
-            RenderView(lineHeight: 2, lineSpacing: 20, pattern: "")
-                .padding(.horizontal, 16)
-            Spacer()
-            PatternActionsView(onEdit: onEdit)
+        ZStack(alignment: .topTrailing) {
+            VStack {
+                RenderView(lineHeight: 2, lineSpacing: 20, pattern: "")
+                    .padding(.horizontal, 16)
+                Spacer()
+                PatternActionsView(onEdit: onEdit)
+            }
+
+            DeleteButton(
+                action: {
+                
+                }
+            )
+            .padding(.trailing, 16)
+        }
+    }
+}
+
+struct DeleteButton: View {
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .foregroundColor(.white)
+                    .frame(width: 44, height: 44)
+                    .shadow(radius: 5)
+
+                Image(systemName: "trash")
+                    .foregroundColor(.red)
+            }
         }
     }
 }

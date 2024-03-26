@@ -2,7 +2,8 @@ import SwiftUI
 
 struct DurationView: View {
     @Binding var stage: PatternEditingStage
-    @Binding var selectedDurationType: DurationType
+    @Binding var selectedDuration: NoteDuration
+    @Binding var selectedNoteType: NoteType
     @Binding var isDottedSelection: Bool
 
     var body: some View {
@@ -13,27 +14,26 @@ struct DurationView: View {
                 HStack(spacing: 10) {
                     ForEach(NoteDuration.displayableCases, id: \.self) { duration in
                         Button(action: {
-                            switch selectedDurationType {
+                            switch selectedNoteType {
                             case .note:
                                 stage = .pitch
                             case .rest:
                                 stage = .restOrNote
                             }
-                            self.stage = .pitch
                         }) {
                             VStack{
                                 ZStack {
                                     StaffLinesView(lineSpacing: 15, lineHeight: 2)
                                         .frame(width: 50, height: 70)
-                                    switch selectedDurationType {
+                                    switch selectedNoteType {
                                     case .note:
                                         if duration == .sixteenth || duration == .full {
-                                            NoteSymbol(noteSize: CGSize(width: 15, height: 15), noteDuration: duration, isDotted: false)
+                                            NoteSymbol(noteSize: CGSize(width: 15, height: 15), noteDuration: duration, isDotted: false, stemType: .stemUp)
                                                 .frame(width: 15, height: 15)
                                                 .offset(x: 0, y: 8)
                                         }
                                         else {
-                                            NoteSymbol(noteSize: CGSize(width: 15, height: 15), noteDuration: duration, isDotted: isDottedSelection)
+                                            NoteSymbol(noteSize: CGSize(width: 15, height: 15), noteDuration: duration, isDotted: isDottedSelection, stemType: .stemUp)
                                                 .frame(width: 15, height: 15)
                                                 .offset(x: 0, y: 8)
                                         }

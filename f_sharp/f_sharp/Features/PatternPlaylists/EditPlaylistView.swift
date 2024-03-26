@@ -84,7 +84,7 @@ struct EditPlaylistView: View {
                             })
                             .frame(width: UIScreen.main.bounds.width * 0.7)
                         }else {
-                            PatternView(onEdit: {
+                            PatternPreviewView(onEdit: {
                                 self.isPatternInEdit = true
                             })
                             .frame(width: UIScreen.main.bounds.width * 0.7)
