@@ -6,5 +6,5 @@ class PracticeViewManager: ObservableObject {
 }
 
 enum PracticeViewState {
-    case home, editPlaylist, playlistOverview
+    case home, editPlaylist, playlistOverview, playlistManager
 }

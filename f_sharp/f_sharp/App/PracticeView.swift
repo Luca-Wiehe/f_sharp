@@ -141,7 +141,7 @@ struct PlaylistManagerCardView: View {
     }
 
     private func managePlaylists() {
-        // Action to manage playlists
+        practiceViewManager.currentView = .playlistManager
     }
 }
 
@@ -185,6 +185,8 @@ struct PracticeView: View {
             }
         case .playlistOverview:
             PlaylistOverviewView()
+        case .playlistManager:
+            ManagePlaylistsView()
         }
     }
 }
