@@ -38,6 +38,11 @@ class PatternStorage: ObservableObject {
         }
     }
     
+    func loadPatterns(for ids: [UUID]) -> [Pattern] {
+        let allPatterns = loadPatterns()
+        return allPatterns.filter { ids.contains($0.id) }
+    }
+    
     func addPattern(_ pattern: Pattern) {
         patterns.append(pattern)
         savePatterns()

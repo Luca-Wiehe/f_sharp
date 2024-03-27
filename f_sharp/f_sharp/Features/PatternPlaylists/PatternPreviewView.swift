@@ -17,7 +17,8 @@ struct PatternPreviewView: View {
                 
                 }
             )
-            .padding(.trailing, 16)
+            .padding(.trailing, 32)
+            .padding(.top, 16)
         }
     }
 }
@@ -64,7 +65,7 @@ struct PatternActionsView: View {
                     }
                 }
 
-                // Edit button (larger and emphasized)
+                // Edit Button
                 Button(action: {
                     onEdit()
                 }) {

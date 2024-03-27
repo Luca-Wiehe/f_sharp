@@ -43,4 +43,14 @@ class PlaylistStorage: ObservableObject {
         playlists.removeAll { $0.id == playlistID }
         savePlaylists(playlists)
     }
+    
+    func updatePlaylist(_ updatedPlaylist: PatternPlaylist) {
+        var playlists = loadPlaylists()
+        if let index = playlists.firstIndex(where: { $0.id == updatedPlaylist.id }) {
+            playlists[index] = updatedPlaylist
+            savePlaylists(playlists)
+        } else {
+            print("Playlist not found")
+        }
+    }
 }

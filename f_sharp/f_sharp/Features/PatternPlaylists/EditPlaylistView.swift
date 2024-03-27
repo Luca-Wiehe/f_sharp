@@ -5,7 +5,7 @@ struct EditPlaylistView: View {
     
     @Binding var currentPlaylist: PatternPlaylist
     
-    @State private var patterns: [Pattern] = PatternStorage.shared.loadPatterns()
+    @State private var patterns: [Pattern] = []
     @State private var selectedPattern: Pattern?
     @State private var patternsExpanded: Bool = true
     @State private var isPatternInEdit: Bool = false
@@ -44,9 +44,12 @@ struct EditPlaylistView: View {
                                             
                                             let playlistViewModel = PatternPlaylistViewModel(playlist: currentPlaylist)
                                             playlistViewModel.addPattern(newPattern)
+                                            
                                             selectedPattern = newPattern
                                             
-                                            patterns = PatternStorage.shared.loadPatterns()
+                                            let patternReferences = playlistViewModel.getPatternIds()
+                                            
+                                            patterns = PatternStorage.shared.loadPatterns(for: patternReferences)
                                         }
                                     )
 
@@ -97,7 +100,16 @@ struct EditPlaylistView: View {
                 }
             }
         }
+        .onAppear {
+            updatePatternsList()
+        }
         .frame(maxHeight: .infinity, alignment: .top)
+    }
+    
+    private func updatePatternsList() {
+        self.patterns = PatternStorage.shared.loadPatterns(for: currentPlaylist.patternReferences)
+        
+        self.selectedPattern = self.patterns[0]
     }
 }
 
